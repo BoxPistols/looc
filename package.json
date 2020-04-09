@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "workspaces": [
+    "looc",
+    "looc-loader"
+  ],
+  "devDependencies": {
+    "@yarnpkg/pnpify": "^2.0.0-rc.20",
+    "typescript": "^3.8.3"
+  }
+}

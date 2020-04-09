@@ -1,0 +1,30 @@
+{
+  "name": "looc",
+  "scripts": {
+    "buildr": "rollup -c",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-json": "^4.0.2",
+    "@types/fs-extra": "^8.1.0",
+    "@types/node": "^13.11.1",
+    "@types/sade": "^1.6.0",
+    "@types/serve-handler": "^6.1.0",
+    "rollup-plugin-pnp-resolve": "^2.0.0",
+    "rollup-plugin-typescript2": "^0.27.0",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "5.0.0-beta.14",
+    "webpack-cli": "4.0.0-beta.8",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "rollup": "^2.3.4"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.0",
+    "sade": "^1.7.3",
+    "serve-handler": "^6.1.2",
+    "ts-morph": "^7.0.2",
+    "tsx-ray": "^0.1.2"
+  }
+}
