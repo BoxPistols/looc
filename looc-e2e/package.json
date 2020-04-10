@@ -1,9 +1,16 @@
 {
   "name": "looc-e2e",
   "scripts": {
-    "say-hello": "storyline hello"
+    "say-hello": "looc hello",
+    "launch": "looc launch"
   },
   "dependencies": {
-    "looc": "workspace:looc"
+    "looc": "workspace:looc",
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.34",
+    "tslib": "^1.11.1",
+    "typescript": "^3.8.3"
   }
 }

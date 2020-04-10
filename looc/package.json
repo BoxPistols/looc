@@ -1,14 +1,16 @@
 {
   "name": "looc",
-  "type": "module",
   "main": "build/index.cjs.js",
   "bin": "bin/cli.js",
   "module": "build/index.esm.js",
   "files": [
-    "build"
+    "build",
+    "bin"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c && cp -R html build && cp -R snowpack build && yarn copy-files",
+    "copy-files": "cp -R html build && cp -R snowpack build && cp -R src/web_modules build",
+    "install-modules": "yarn dlx snowpack --source pika"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
@@ -22,7 +24,9 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "execa": "^4.0.0",
     "fs-extra": "^9.0.0",
+    "looc-loader": "workspace:looc-loader",
     "rollup": "^2.3.4",
     "sade": "^1.7.3",
     "serve-handler": "^6.1.2",

@@ -45,12 +45,892 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     ],
     "fallbackPool": [
       [
+        "@dsherret/to-absolute-glob",
+        "npm:2.0.2"
+      ],
+      [
+        "@nodelib/fs.scandir",
+        "npm:2.1.3"
+      ],
+      [
+        "@nodelib/fs.stat",
+        "npm:2.0.3"
+      ],
+      [
+        "@nodelib/fs.walk",
+        "npm:1.2.4"
+      ],
+      [
+        "@rollup/pluginutils",
+        "virtual:60c91f3f6b111854d7f39d7fa4c1089bb525ce4ebde690b5a5966d5907dc6fcd64370065c06d48030084ad46d0cf0559e8a6cdf01dc73c17187656e0184275f2#npm:3.0.8"
+      ],
+      [
+        "@ts-morph/common",
+        "npm:0.4.0"
+      ],
+      [
+        "@types/color-name",
+        "npm:1.1.1"
+      ],
+      [
+        "@types/emscripten",
+        "npm:1.39.3"
+      ],
+      [
+        "@types/estree",
+        "npm:0.0.39"
+      ],
+      [
+        "@types/fs-extra",
+        "npm:8.1.0"
+      ],
+      [
+        "@types/minimatch",
+        "npm:3.0.3"
+      ],
+      [
+        "@types/mri",
+        "npm:1.1.0"
+      ],
+      [
+        "@types/node",
+        "npm:13.11.1"
+      ],
+      [
+        "@types/prop-types",
+        "npm:15.7.3"
+      ],
+      [
+        "@types/react",
+        "npm:16.9.34"
+      ],
+      [
+        "@types/react-dom",
+        "npm:16.9.6"
+      ],
+      [
+        "@types/resolve",
+        "npm:0.0.8"
+      ],
+      [
+        "@types/sade",
+        "npm:1.6.0"
+      ],
+      [
+        "@types/serve-handler",
+        "npm:6.1.0"
+      ],
+      [
+        "@yarnpkg/fslib",
+        "npm:2.0.0-rc.17"
+      ],
+      [
+        "@yarnpkg/libzip",
+        "npm:2.0.0-rc.10"
+      ],
+      [
         "@yarnpkg/pnpify",
         "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.0.0-rc.20"
       ],
       [
+        "abbrev",
+        "npm:1.1.1"
+      ],
+      [
+        "ajv",
+        "npm:6.12.0"
+      ],
+      [
+        "ansi-regex",
+        "npm:2.1.1"
+      ],
+      [
+        "ansi-styles",
+        "npm:4.2.1"
+      ],
+      [
+        "aproba",
+        "npm:1.2.0"
+      ],
+      [
+        "are-we-there-yet",
+        "npm:1.1.5"
+      ],
+      [
+        "array-differ",
+        "npm:3.0.0"
+      ],
+      [
+        "array-union",
+        "npm:2.1.0"
+      ],
+      [
+        "arrify",
+        "npm:2.0.1"
+      ],
+      [
+        "asn1",
+        "npm:0.2.4"
+      ],
+      [
+        "assert-plus",
+        "npm:1.0.0"
+      ],
+      [
+        "asynckit",
+        "npm:0.4.0"
+      ],
+      [
+        "at-least-node",
+        "npm:1.0.0"
+      ],
+      [
+        "aws-sign2",
+        "npm:0.7.0"
+      ],
+      [
+        "aws4",
+        "npm:1.9.1"
+      ],
+      [
+        "balanced-match",
+        "npm:1.0.0"
+      ],
+      [
+        "bcrypt-pbkdf",
+        "npm:1.0.2"
+      ],
+      [
+        "brace-expansion",
+        "npm:1.1.11"
+      ],
+      [
+        "braces",
+        "npm:3.0.2"
+      ],
+      [
+        "builtin-modules",
+        "npm:3.1.0"
+      ],
+      [
+        "bytes",
+        "npm:3.0.0"
+      ],
+      [
+        "caseless",
+        "npm:0.12.0"
+      ],
+      [
+        "chalk",
+        "npm:3.0.0"
+      ],
+      [
+        "chownr",
+        "npm:1.1.4"
+      ],
+      [
+        "code-block-writer",
+        "npm:10.1.0"
+      ],
+      [
+        "code-point-at",
+        "npm:1.1.0"
+      ],
+      [
+        "color-convert",
+        "npm:2.0.1"
+      ],
+      [
+        "color-name",
+        "npm:1.1.4"
+      ],
+      [
+        "combined-stream",
+        "npm:1.0.8"
+      ],
+      [
+        "comment-json",
+        "npm:2.4.2"
+      ],
+      [
+        "commondir",
+        "npm:1.0.1"
+      ],
+      [
+        "concat-map",
+        "npm:0.0.1"
+      ],
+      [
+        "console-control-strings",
+        "npm:1.1.0"
+      ],
+      [
+        "content-disposition",
+        "npm:0.5.2"
+      ],
+      [
+        "core-util-is",
+        "npm:1.0.2"
+      ],
+      [
+        "cross-spawn",
+        "npm:7.0.2"
+      ],
+      [
+        "csstype",
+        "npm:2.6.10"
+      ],
+      [
+        "dashdash",
+        "npm:1.14.1"
+      ],
+      [
+        "delayed-stream",
+        "npm:1.0.0"
+      ],
+      [
+        "delegates",
+        "npm:1.0.0"
+      ],
+      [
+        "ecc-jsbn",
+        "npm:0.1.2"
+      ],
+      [
+        "end-of-stream",
+        "npm:1.4.4"
+      ],
+      [
+        "env-paths",
+        "npm:2.2.0"
+      ],
+      [
+        "esprima",
+        "npm:4.0.1"
+      ],
+      [
+        "estree-walker",
+        "npm:1.0.1"
+      ],
+      [
+        "execa",
+        "npm:4.0.0"
+      ],
+      [
+        "extend",
+        "npm:3.0.2"
+      ],
+      [
+        "extsprintf",
+        "npm:1.3.0"
+      ],
+      [
+        "fast-deep-equal",
+        "npm:3.1.1"
+      ],
+      [
+        "fast-glob",
+        "npm:3.2.2"
+      ],
+      [
+        "fast-json-stable-stringify",
+        "npm:2.1.0"
+      ],
+      [
+        "fast-url-parser",
+        "npm:1.1.3"
+      ],
+      [
+        "fastq",
+        "npm:1.7.0"
+      ],
+      [
+        "fill-range",
+        "npm:7.0.1"
+      ],
+      [
+        "find-cache-dir",
+        "npm:3.3.1"
+      ],
+      [
+        "find-up",
+        "npm:4.1.0"
+      ],
+      [
+        "forever-agent",
+        "npm:0.6.1"
+      ],
+      [
+        "form-data",
+        "npm:2.3.3"
+      ],
+      [
+        "fs-extra",
+        "npm:9.0.0"
+      ],
+      [
+        "fs-minipass",
+        "npm:1.2.7"
+      ],
+      [
+        "fs.realpath",
+        "npm:1.0.0"
+      ],
+      [
+        "fsevents",
+        "patch:fsevents@npm%3A2.1.2#builtin<compat/fsevents>::version=2.1.2&hash=77dfe6"
+      ],
+      [
+        "gauge",
+        "npm:2.7.4"
+      ],
+      [
+        "get-stream",
+        "npm:5.1.0"
+      ],
+      [
+        "getpass",
+        "npm:0.1.7"
+      ],
+      [
+        "glob",
+        "npm:7.1.6"
+      ],
+      [
+        "glob-parent",
+        "npm:5.1.1"
+      ],
+      [
+        "graceful-fs",
+        "npm:4.2.3"
+      ],
+      [
+        "har-schema",
+        "npm:2.0.0"
+      ],
+      [
+        "har-validator",
+        "npm:5.1.3"
+      ],
+      [
+        "has-flag",
+        "npm:4.0.0"
+      ],
+      [
+        "has-own-prop",
+        "npm:2.0.0"
+      ],
+      [
+        "has-unicode",
+        "npm:2.0.1"
+      ],
+      [
+        "http-signature",
+        "npm:1.2.0"
+      ],
+      [
+        "human-signals",
+        "npm:1.1.1"
+      ],
+      [
+        "inflight",
+        "npm:1.0.6"
+      ],
+      [
+        "inherits",
+        "npm:2.0.4"
+      ],
+      [
+        "is-absolute",
+        "npm:1.0.0"
+      ],
+      [
+        "is-extglob",
+        "npm:2.1.1"
+      ],
+      [
+        "is-fullwidth-code-point",
+        "npm:1.0.0"
+      ],
+      [
+        "is-glob",
+        "npm:4.0.1"
+      ],
+      [
+        "is-module",
+        "npm:1.0.0"
+      ],
+      [
+        "is-negated-glob",
+        "npm:1.0.0"
+      ],
+      [
+        "is-number",
+        "npm:7.0.0"
+      ],
+      [
+        "is-reference",
+        "npm:1.1.4"
+      ],
+      [
+        "is-relative",
+        "npm:1.0.0"
+      ],
+      [
+        "is-stream",
+        "npm:2.0.0"
+      ],
+      [
+        "is-typedarray",
+        "npm:1.0.0"
+      ],
+      [
+        "is-unc-path",
+        "npm:1.0.0"
+      ],
+      [
+        "is-windows",
+        "npm:1.0.2"
+      ],
+      [
+        "isarray",
+        "npm:1.0.0"
+      ],
+      [
+        "isexe",
+        "npm:2.0.0"
+      ],
+      [
+        "isstream",
+        "npm:0.1.2"
+      ],
+      [
+        "js-tokens",
+        "npm:4.0.0"
+      ],
+      [
+        "jsbn",
+        "npm:0.1.1"
+      ],
+      [
+        "json-schema",
+        "npm:0.2.3"
+      ],
+      [
+        "json-schema-traverse",
+        "npm:0.4.1"
+      ],
+      [
+        "json-stringify-safe",
+        "npm:5.0.1"
+      ],
+      [
+        "jsonfile",
+        "npm:4.0.0"
+      ],
+      [
+        "jsprim",
+        "npm:1.4.1"
+      ],
+      [
+        "locate-path",
+        "npm:5.0.0"
+      ],
+      [
+        "looc",
+        "workspace:looc"
+      ],
+      [
+        "looc-e2e",
+        "workspace:looc-e2e"
+      ],
+      [
+        "looc-loader",
+        "workspace:looc-loader"
+      ],
+      [
+        "loose-envify",
+        "npm:1.4.0"
+      ],
+      [
+        "magic-string",
+        "npm:0.25.7"
+      ],
+      [
+        "make-dir",
+        "npm:3.0.2"
+      ],
+      [
+        "merge-stream",
+        "npm:2.0.0"
+      ],
+      [
+        "merge2",
+        "npm:1.3.0"
+      ],
+      [
+        "micromatch",
+        "npm:4.0.2"
+      ],
+      [
+        "mime-db",
+        "npm:1.33.0"
+      ],
+      [
+        "mime-types",
+        "npm:2.1.26"
+      ],
+      [
+        "mimic-fn",
+        "npm:2.1.0"
+      ],
+      [
+        "minimatch",
+        "npm:3.0.4"
+      ],
+      [
+        "minimist",
+        "npm:1.2.5"
+      ],
+      [
+        "minipass",
+        "npm:2.9.0"
+      ],
+      [
+        "minizlib",
+        "npm:1.3.3"
+      ],
+      [
+        "mkdirp",
+        "npm:0.5.5"
+      ],
+      [
+        "mri",
+        "npm:1.1.5"
+      ],
+      [
+        "multimatch",
+        "npm:4.0.0"
+      ],
+      [
+        "nice-try",
+        "npm:1.0.5"
+      ],
+      [
+        "node-gyp",
+        "npm:6.1.0"
+      ],
+      [
+        "nopt",
+        "npm:4.0.3"
+      ],
+      [
+        "npm-run-path",
+        "npm:4.0.1"
+      ],
+      [
+        "npmlog",
+        "npm:4.1.2"
+      ],
+      [
+        "number-is-nan",
+        "npm:1.0.1"
+      ],
+      [
+        "oauth-sign",
+        "npm:0.9.0"
+      ],
+      [
+        "object-assign",
+        "npm:4.1.1"
+      ],
+      [
+        "once",
+        "npm:1.4.0"
+      ],
+      [
+        "onetime",
+        "npm:5.1.0"
+      ],
+      [
+        "os-homedir",
+        "npm:1.0.2"
+      ],
+      [
+        "os-tmpdir",
+        "npm:1.0.2"
+      ],
+      [
+        "osenv",
+        "npm:0.1.5"
+      ],
+      [
+        "p-limit",
+        "npm:2.3.0"
+      ],
+      [
+        "p-locate",
+        "npm:4.1.0"
+      ],
+      [
+        "p-try",
+        "npm:2.2.0"
+      ],
+      [
+        "path-exists",
+        "npm:4.0.0"
+      ],
+      [
+        "path-is-absolute",
+        "npm:1.0.1"
+      ],
+      [
+        "path-is-inside",
+        "npm:1.0.2"
+      ],
+      [
+        "path-key",
+        "npm:3.1.1"
+      ],
+      [
+        "path-parse",
+        "npm:1.0.6"
+      ],
+      [
+        "path-to-regexp",
+        "npm:2.2.1"
+      ],
+      [
+        "performance-now",
+        "npm:2.1.0"
+      ],
+      [
+        "picomatch",
+        "npm:2.2.2"
+      ],
+      [
+        "pkg-dir",
+        "npm:4.2.0"
+      ],
+      [
+        "process-nextick-args",
+        "npm:2.0.1"
+      ],
+      [
+        "prop-types",
+        "npm:15.7.2"
+      ],
+      [
+        "psl",
+        "npm:1.8.0"
+      ],
+      [
+        "pump",
+        "npm:3.0.0"
+      ],
+      [
+        "punycode",
+        "npm:2.1.1"
+      ],
+      [
+        "qs",
+        "npm:6.5.2"
+      ],
+      [
+        "range-parser",
+        "npm:1.2.0"
+      ],
+      [
+        "react",
+        "npm:16.13.1"
+      ],
+      [
+        "react-dom",
+        "virtual:c2e615aab7b6ef1b222b8dcfd48a1fb36cf5d97fff11eb10d190f688a077017289ceab5afbbbf915309e83fa14815fb701a81f8bec817ec9edd69f1f2635f70a#npm:16.13.1"
+      ],
+      [
+        "react-is",
+        "npm:16.13.1"
+      ],
+      [
+        "readable-stream",
+        "npm:2.3.7"
+      ],
+      [
+        "repeat-string",
+        "npm:1.6.1"
+      ],
+      [
+        "request",
+        "npm:2.88.2"
+      ],
+      [
+        "resolve",
+        "patch:resolve@npm%3A1.15.1#builtin<compat/resolve>::version=1.15.1&hash=8fccd0"
+      ],
+      [
+        "reusify",
+        "npm:1.0.4"
+      ],
+      [
+        "rimraf",
+        "npm:2.7.1"
+      ],
+      [
+        "rollup",
+        "npm:2.4.0"
+      ],
+      [
+        "rollup-plugin-typescript2",
+        "virtual:c2e615aab7b6ef1b222b8dcfd48a1fb36cf5d97fff11eb10d190f688a077017289ceab5afbbbf915309e83fa14815fb701a81f8bec817ec9edd69f1f2635f70a#npm:0.27.0"
+      ],
+      [
+        "run-parallel",
+        "npm:1.1.9"
+      ],
+      [
+        "sade",
+        "npm:1.7.3"
+      ],
+      [
+        "safe-buffer",
+        "npm:5.2.0"
+      ],
+      [
+        "safer-buffer",
+        "npm:2.1.2"
+      ],
+      [
+        "scheduler",
+        "npm:0.19.1"
+      ],
+      [
+        "semver",
+        "npm:5.7.1"
+      ],
+      [
+        "serve-handler",
+        "npm:6.1.2"
+      ],
+      [
+        "set-blocking",
+        "npm:2.0.0"
+      ],
+      [
+        "shebang-command",
+        "npm:2.0.0"
+      ],
+      [
+        "shebang-regex",
+        "npm:3.0.0"
+      ],
+      [
+        "signal-exit",
+        "npm:3.0.3"
+      ],
+      [
+        "sourcemap-codec",
+        "npm:1.4.8"
+      ],
+      [
+        "sshpk",
+        "npm:1.16.1"
+      ],
+      [
+        "string-width",
+        "npm:1.0.2"
+      ],
+      [
+        "string_decoder",
+        "npm:1.1.1"
+      ],
+      [
+        "strip-ansi",
+        "npm:3.0.1"
+      ],
+      [
+        "strip-final-newline",
+        "npm:2.0.0"
+      ],
+      [
+        "supports-color",
+        "npm:7.1.0"
+      ],
+      [
+        "tar",
+        "npm:4.4.13"
+      ],
+      [
+        "to-regex-range",
+        "npm:5.0.1"
+      ],
+      [
+        "tough-cookie",
+        "npm:2.5.0"
+      ],
+      [
+        "ts-morph",
+        "npm:7.0.2"
+      ],
+      [
+        "tslib",
+        "npm:1.11.1"
+      ],
+      [
+        "tsx-ray",
+        "npm:0.1.2"
+      ],
+      [
+        "tunnel-agent",
+        "npm:0.6.0"
+      ],
+      [
+        "tweetnacl",
+        "npm:0.14.5"
+      ],
+      [
         "typescript",
         "patch:typescript@npm%3A3.8.3#builtin<compat/typescript>::version=3.8.3&hash=270b6c"
+      ],
+      [
+        "unc-path-regex",
+        "npm:0.1.2"
+      ],
+      [
+        "universalify",
+        "npm:1.0.0"
+      ],
+      [
+        "uri-js",
+        "npm:4.2.2"
+      ],
+      [
+        "util-deprecate",
+        "npm:1.0.2"
+      ],
+      [
+        "uuid",
+        "npm:3.4.0"
+      ],
+      [
+        "verror",
+        "npm:1.10.0"
+      ],
+      [
+        "which",
+        "npm:1.3.1"
+      ],
+      [
+        "wide-align",
+        "npm:1.1.3"
+      ],
+      [
+        "wrappy",
+        "npm:1.0.2"
+      ],
+      [
+        "yallist",
+        "npm:3.1.1"
       ]
     ],
     "locationBlacklistData": [
@@ -710,6 +1590,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["which", "npm:1.3.1"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:7.0.2", {
+          "packageLocation": "./.yarn/cache/cross-spawn-npm-7.0.2-fef0e84eed-2.zip/node_modules/cross-spawn/",
+          "packageDependencies": [
+            ["cross-spawn", "npm:7.0.2"],
+            ["path-key", "npm:3.1.1"],
+            ["shebang-command", "npm:2.0.0"],
+            ["which", "npm:2.0.2"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["csstype", [
@@ -760,6 +1650,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["end-of-stream", [
+        ["npm:1.4.4", {
+          "packageLocation": "./.yarn/cache/end-of-stream-npm-1.4.4-497fc6dee1-2.zip/node_modules/end-of-stream/",
+          "packageDependencies": [
+            ["end-of-stream", "npm:1.4.4"],
+            ["once", "npm:1.4.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["env-paths", [
         ["npm:2.2.0", {
           "packageLocation": "./.yarn/cache/env-paths-npm-2.2.0-ac4ed99068-2.zip/node_modules/env-paths/",
@@ -783,6 +1683,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/estree-walker-npm-1.0.1-e916593b23-2.zip/node_modules/estree-walker/",
           "packageDependencies": [
             ["estree-walker", "npm:1.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["execa", [
+        ["npm:4.0.0", {
+          "packageLocation": "./.yarn/cache/execa-npm-4.0.0-fa9a81eac2-2.zip/node_modules/execa/",
+          "packageDependencies": [
+            ["execa", "npm:4.0.0"],
+            ["cross-spawn", "npm:7.0.2"],
+            ["get-stream", "npm:5.1.0"],
+            ["human-signals", "npm:1.1.1"],
+            ["is-stream", "npm:2.0.0"],
+            ["merge-stream", "npm:2.0.0"],
+            ["npm-run-path", "npm:4.0.1"],
+            ["onetime", "npm:5.1.0"],
+            ["signal-exit", "npm:3.0.3"],
+            ["strip-final-newline", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -912,15 +1830,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["fs", [
-        ["npm:0.0.2", {
-          "packageLocation": "./.yarn/cache/fs-npm-0.0.2-bba8c78dbd-2.zip/node_modules/fs/",
-          "packageDependencies": [
-            ["fs", "npm:0.0.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["fs-extra", [
         ["npm:8.1.0", {
           "packageLocation": "./.yarn/cache/fs-extra-npm-8.1.0-197473387f-2.zip/node_modules/fs-extra/",
@@ -986,6 +1895,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["string-width", "npm:1.0.2"],
             ["strip-ansi", "npm:3.0.1"],
             ["wide-align", "npm:1.1.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["get-stream", [
+        ["npm:5.1.0", {
+          "packageLocation": "./.yarn/cache/get-stream-npm-5.1.0-29a3aa3558-2.zip/node_modules/get-stream/",
+          "packageDependencies": [
+            ["get-stream", "npm:5.1.0"],
+            ["pump", "npm:3.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -1093,6 +2012,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["human-signals", [
+        ["npm:1.1.1", {
+          "packageLocation": "./.yarn/cache/human-signals-npm-1.1.1-616b2586c2-2.zip/node_modules/human-signals/",
+          "packageDependencies": [
+            ["human-signals", "npm:1.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["inflight", [
         ["npm:1.0.6", {
           "packageLocation": "./.yarn/cache/inflight-npm-1.0.6-ccedb4b908-2.zip/node_modules/inflight/",
@@ -1105,13 +2033,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["inherits", [
-        ["npm:2.0.3", {
-          "packageLocation": "./.yarn/cache/inherits-npm-2.0.3-401e64b080-2.zip/node_modules/inherits/",
-          "packageDependencies": [
-            ["inherits", "npm:2.0.3"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:2.0.4", {
           "packageLocation": "./.yarn/cache/inherits-npm-2.0.4-c66b3957a0-2.zip/node_modules/inherits/",
           "packageDependencies": [
@@ -1203,6 +2124,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["is-relative", "npm:1.0.0"],
             ["is-unc-path", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["is-stream", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/is-stream-npm-2.0.0-1401f82ad7-2.zip/node_modules/is-stream/",
+          "packageDependencies": [
+            ["is-stream", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -1361,7 +2291,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:13.11.1"],
             ["@types/sade", "npm:1.6.0"],
             ["@types/serve-handler", "npm:6.1.0"],
+            ["execa", "npm:4.0.0"],
             ["fs-extra", "npm:9.0.0"],
+            ["looc-loader", "workspace:looc-loader"],
             ["rollup", "npm:2.3.4"],
             ["rollup-plugin-typescript2", "virtual:bfcfffe88fd61df077caa41114586842a32d01f5e8c979a932271b543853085a7068b5d3c41db4509842df4cd9d624b24ab60111603766d4c0299ad80db6a0c8#npm:0.27.0"],
             ["sade", "npm:1.7.3"],
@@ -1378,7 +2310,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./looc-e2e/",
           "packageDependencies": [
             ["looc-e2e", "workspace:looc-e2e"],
-            ["looc", "workspace:looc"]
+            ["@types/react", "npm:16.9.34"],
+            ["looc", "workspace:looc"],
+            ["react", "npm:16.13.1"],
+            ["tslib", "npm:1.11.1"],
+            ["typescript", "patch:typescript@npm%3A3.8.3#builtin<compat/typescript>::version=3.8.3&hash=270b6c"]
           ],
           "linkType": "SOFT",
         }]
@@ -1427,6 +2363,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["make-dir", "npm:3.0.2"],
             ["semver", "npm:6.3.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["merge-stream", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/merge-stream-npm-2.0.0-2ac83efea5-2.zip/node_modules/merge-stream/",
+          "packageDependencies": [
+            ["merge-stream", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -1485,13 +2430,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["mimic-fn", [
+        ["npm:2.1.0", {
+          "packageLocation": "./.yarn/cache/mimic-fn-npm-2.1.0-4fbeb3abb4-2.zip/node_modules/mimic-fn/",
+          "packageDependencies": [
+            ["mimic-fn", "npm:2.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["minimatch", [
         ["npm:3.0.4", {
           "packageLocation": "./.yarn/cache/minimatch-npm-3.0.4-6e76f51c23-2.zip/node_modules/minimatch/",
           "packageDependencies": [
             ["minimatch", "npm:3.0.4"],
-            ["brace-expansion", "npm:1.1.11"],
-            ["path", "npm:0.12.7"]
+            ["brace-expansion", "npm:1.1.11"]
           ],
           "linkType": "HARD",
         }]
@@ -1599,6 +2552,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["npm-run-path", [
+        ["npm:4.0.1", {
+          "packageLocation": "./.yarn/cache/npm-run-path-npm-4.0.1-7aebd8bab3-2.zip/node_modules/npm-run-path/",
+          "packageDependencies": [
+            ["npm-run-path", "npm:4.0.1"],
+            ["path-key", "npm:3.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["npmlog", [
         ["npm:4.1.2", {
           "packageLocation": "./.yarn/cache/npmlog-npm-4.1.2-cfb32957b5-2.zip/node_modules/npmlog/",
@@ -1645,6 +2608,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["once", "npm:1.4.0"],
             ["wrappy", "npm:1.0.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["onetime", [
+        ["npm:5.1.0", {
+          "packageLocation": "./.yarn/cache/onetime-npm-5.1.0-8d9e23c1e0-2.zip/node_modules/onetime/",
+          "packageDependencies": [
+            ["onetime", "npm:5.1.0"],
+            ["mimic-fn", "npm:2.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -1707,17 +2680,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["path", [
-        ["npm:0.12.7", {
-          "packageLocation": "./.yarn/cache/path-npm-0.12.7-bddabe2e86-2.zip/node_modules/path/",
-          "packageDependencies": [
-            ["path", "npm:0.12.7"],
-            ["process", "npm:0.11.10"],
-            ["util", "npm:0.10.4"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["path-exists", [
         ["npm:4.0.0", {
           "packageLocation": "./.yarn/cache/path-exists-npm-4.0.0-e9e4f63eb0-2.zip/node_modules/path-exists/",
@@ -1750,6 +2712,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/path-key-npm-2.0.1-b1a971833d-2.zip/node_modules/path-key/",
           "packageDependencies": [
             ["path-key", "npm:2.0.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.1.1", {
+          "packageLocation": "./.yarn/cache/path-key-npm-3.1.1-0e66ea8321-2.zip/node_modules/path-key/",
+          "packageDependencies": [
+            ["path-key", "npm:3.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -1800,15 +2769,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["process", [
-        ["npm:0.11.10", {
-          "packageLocation": "./.yarn/cache/process-npm-0.11.10-aeb3b641ae-2.zip/node_modules/process/",
-          "packageDependencies": [
-            ["process", "npm:0.11.10"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["process-nextick-args", [
         ["npm:2.0.1", {
           "packageLocation": "./.yarn/cache/process-nextick-args-npm-2.0.1-b8d7971609-2.zip/node_modules/process-nextick-args/",
@@ -1835,6 +2795,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/psl-npm-1.8.0-226099d70e-2.zip/node_modules/psl/",
           "packageDependencies": [
             ["psl", "npm:1.8.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["pump", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/pump-npm-3.0.0-0080bf6a7a-2.zip/node_modules/pump/",
+          "packageDependencies": [
+            ["pump", "npm:3.0.0"],
+            ["end-of-stream", "npm:1.4.4"],
+            ["once", "npm:1.4.0"]
           ],
           "linkType": "HARD",
         }]
@@ -2140,7 +3111,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["bytes", "npm:3.0.0"],
             ["content-disposition", "npm:0.5.2"],
             ["fast-url-parser", "npm:1.1.3"],
-            ["fs", "npm:0.0.2"],
             ["mime-types", "npm:2.1.18"],
             ["minimatch", "npm:3.0.4"],
             ["path-is-inside", "npm:1.0.2"],
@@ -2167,6 +3137,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["shebang-regex", "npm:1.0.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/shebang-command-npm-2.0.0-eb2b01921d-2.zip/node_modules/shebang-command/",
+          "packageDependencies": [
+            ["shebang-command", "npm:2.0.0"],
+            ["shebang-regex", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["shebang-regex", [
@@ -2174,6 +3152,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/shebang-regex-npm-1.0.0-c3612b74e9-2.zip/node_modules/shebang-regex/",
           "packageDependencies": [
             ["shebang-regex", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/shebang-regex-npm-3.0.0-899a0cd65e-2.zip/node_modules/shebang-regex/",
+          "packageDependencies": [
+            ["shebang-regex", "npm:3.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -2242,6 +3227,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["strip-ansi", "npm:3.0.1"],
             ["ansi-regex", "npm:2.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["strip-final-newline", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/strip-final-newline-npm-2.0.0-340c4f7c66-2.zip/node_modules/strip-final-newline/",
+          "packageDependencies": [
+            ["strip-final-newline", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -2387,16 +3381,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["util", [
-        ["npm:0.10.4", {
-          "packageLocation": "./.yarn/cache/util-npm-0.10.4-7c577db41a-2.zip/node_modules/util/",
-          "packageDependencies": [
-            ["util", "npm:0.10.4"],
-            ["inherits", "npm:2.0.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["util-deprecate", [
         ["npm:1.0.2", {
           "packageLocation": "./.yarn/cache/util-deprecate-npm-1.0.2-e3fe1a219c-2.zip/node_modules/util-deprecate/",
@@ -2432,6 +3416,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/which-npm-1.3.1-f0ebb8bdd8-2.zip/node_modules/which/",
           "packageDependencies": [
             ["which", "npm:1.3.1"],
+            ["isexe", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.0.2", {
+          "packageLocation": "./.yarn/cache/which-npm-2.0.2-320ddf72f7-2.zip/node_modules/which/",
+          "packageDependencies": [
+            ["which", "npm:2.0.2"],
             ["isexe", "npm:2.0.0"]
           ],
           "linkType": "HARD",

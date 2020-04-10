@@ -1,12 +1,8 @@
 {
   "include": ["src", "types"],
   "compilerOptions": {
+    "module": "esnext",
     "lib": ["dom", "esnext"],
-    "target": "es2017",
-    "outDir": "./dist",
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
@@ -23,8 +19,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "module": "esnext"
+    "baseUrl": "./",
+    "jsx": "react",
+    "esModuleInterop": true
   }
 }
