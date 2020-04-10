@@ -6,3 +6,4 @@ build/
 !.yarn/plugins
 *.log
 .DS_Store
+looc-e2e/.cache

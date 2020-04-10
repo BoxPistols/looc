@@ -41,7 +41,7 @@ export const launch = async (filepath: string) => {
     process.exit(1);
   }
 
-  reactImport.setModuleSpecifier(`/web_modules/react.js`);
+  reactImport.setModuleSpecifier(`./web_modules/react.js`);
 
   const parsedInterfaces = extractInterfaces(sourceFile);
 

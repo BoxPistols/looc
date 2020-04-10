@@ -8,9 +8,11 @@
     "bin"
   ],
   "scripts": {
-    "build": "rollup -c && cp -R html build && cp -R snowpack build && yarn copy-files",
-    "copy-files": "cp -R html build && cp -R snowpack build && cp -R src/web_modules build",
-    "install-modules": "yarn dlx snowpack --source pika"
+    "build": "rollup -c && yarn copy-files",
+    "build:win": "rollup -c && yarn copy-files:win",
+    "copy-files": "cp -R html build && cp -R src/web_modules build",
+    "install-modules": "yarn dlx snowpack --source pika",
+    "copy-files:win": "xcopy html build\\html /i /e /h && xcopy \\src\\web_modules build\\web_modules /i /e /h"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",

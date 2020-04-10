@@ -8,7 +8,7 @@ module.exports = {
     strict: false,
     sourceMap: true,
     remoteUrl: "https://cdn.pika.dev",
-    externalPackage: ["react", "react-dom"],
+    externalPackage: ["./react.js", "./react-dom.js"],
   },
   namedExports: {},
   rollup: {
