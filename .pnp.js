@@ -274,7 +274,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "cross-spawn",
-        "npm:7.0.2"
+        "npm:6.0.5"
       ],
       [
         "csstype",
@@ -297,10 +297,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:0.1.2"
       ],
       [
-        "end-of-stream",
-        "npm:1.4.4"
-      ],
-      [
         "env-paths",
         "npm:2.2.0"
       ],
@@ -311,10 +307,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "estree-walker",
         "npm:1.0.1"
-      ],
-      [
-        "execa",
-        "npm:4.0.0"
       ],
       [
         "extend",
@@ -385,10 +377,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:2.7.4"
       ],
       [
-        "get-stream",
-        "npm:5.1.0"
-      ],
-      [
         "getpass",
         "npm:0.1.7"
       ],
@@ -427,10 +415,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "http-signature",
         "npm:1.2.0"
-      ],
-      [
-        "human-signals",
-        "npm:1.1.1"
       ],
       [
         "inflight",
@@ -475,10 +459,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "is-relative",
         "npm:1.0.0"
-      ],
-      [
-        "is-stream",
-        "npm:2.0.0"
       ],
       [
         "is-typedarray",
@@ -561,10 +541,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:3.0.2"
       ],
       [
-        "merge-stream",
-        "npm:2.0.0"
-      ],
-      [
         "merge2",
         "npm:1.3.0"
       ],
@@ -579,10 +555,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "mime-types",
         "npm:2.1.26"
-      ],
-      [
-        "mimic-fn",
-        "npm:2.1.0"
       ],
       [
         "minimatch",
@@ -625,10 +597,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:4.0.3"
       ],
       [
-        "npm-run-path",
-        "npm:4.0.1"
-      ],
-      [
         "npmlog",
         "npm:4.1.2"
       ],
@@ -647,10 +615,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "once",
         "npm:1.4.0"
-      ],
-      [
-        "onetime",
-        "npm:5.1.0"
       ],
       [
         "os-homedir",
@@ -690,7 +654,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "path-key",
-        "npm:3.1.1"
+        "npm:2.0.1"
       ],
       [
         "path-parse",
@@ -723,10 +687,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "psl",
         "npm:1.8.0"
-      ],
-      [
-        "pump",
-        "npm:3.0.0"
       ],
       [
         "punycode",
@@ -818,11 +778,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "shebang-command",
-        "npm:2.0.0"
+        "npm:1.2.0"
       ],
       [
         "shebang-regex",
-        "npm:3.0.0"
+        "npm:1.0.0"
       ],
       [
         "signal-exit",
@@ -847,10 +807,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "strip-ansi",
         "npm:3.0.1"
-      ],
-      [
-        "strip-final-newline",
-        "npm:2.0.0"
       ],
       [
         "supports-color",
@@ -1590,16 +1546,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["which", "npm:1.3.1"]
           ],
           "linkType": "HARD",
-        }],
-        ["npm:7.0.2", {
-          "packageLocation": "./.yarn/cache/cross-spawn-npm-7.0.2-fef0e84eed-2.zip/node_modules/cross-spawn/",
-          "packageDependencies": [
-            ["cross-spawn", "npm:7.0.2"],
-            ["path-key", "npm:3.1.1"],
-            ["shebang-command", "npm:2.0.0"],
-            ["which", "npm:2.0.2"]
-          ],
-          "linkType": "HARD",
         }]
       ]],
       ["csstype", [
@@ -1650,16 +1596,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["end-of-stream", [
-        ["npm:1.4.4", {
-          "packageLocation": "./.yarn/cache/end-of-stream-npm-1.4.4-497fc6dee1-2.zip/node_modules/end-of-stream/",
-          "packageDependencies": [
-            ["end-of-stream", "npm:1.4.4"],
-            ["once", "npm:1.4.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["env-paths", [
         ["npm:2.2.0", {
           "packageLocation": "./.yarn/cache/env-paths-npm-2.2.0-ac4ed99068-2.zip/node_modules/env-paths/",
@@ -1683,24 +1619,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/estree-walker-npm-1.0.1-e916593b23-2.zip/node_modules/estree-walker/",
           "packageDependencies": [
             ["estree-walker", "npm:1.0.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["execa", [
-        ["npm:4.0.0", {
-          "packageLocation": "./.yarn/cache/execa-npm-4.0.0-fa9a81eac2-2.zip/node_modules/execa/",
-          "packageDependencies": [
-            ["execa", "npm:4.0.0"],
-            ["cross-spawn", "npm:7.0.2"],
-            ["get-stream", "npm:5.1.0"],
-            ["human-signals", "npm:1.1.1"],
-            ["is-stream", "npm:2.0.0"],
-            ["merge-stream", "npm:2.0.0"],
-            ["npm-run-path", "npm:4.0.1"],
-            ["onetime", "npm:5.1.0"],
-            ["signal-exit", "npm:3.0.3"],
-            ["strip-final-newline", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -1899,16 +1817,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["get-stream", [
-        ["npm:5.1.0", {
-          "packageLocation": "./.yarn/cache/get-stream-npm-5.1.0-29a3aa3558-2.zip/node_modules/get-stream/",
-          "packageDependencies": [
-            ["get-stream", "npm:5.1.0"],
-            ["pump", "npm:3.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["getpass", [
         ["npm:0.1.7", {
           "packageLocation": "./.yarn/cache/getpass-npm-0.1.7-519164a3be-2.zip/node_modules/getpass/",
@@ -2008,15 +1916,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["assert-plus", "npm:1.0.0"],
             ["jsprim", "npm:1.4.1"],
             ["sshpk", "npm:1.16.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["human-signals", [
-        ["npm:1.1.1", {
-          "packageLocation": "./.yarn/cache/human-signals-npm-1.1.1-616b2586c2-2.zip/node_modules/human-signals/",
-          "packageDependencies": [
-            ["human-signals", "npm:1.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -2124,15 +2023,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["is-relative", "npm:1.0.0"],
             ["is-unc-path", "npm:1.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["is-stream", [
-        ["npm:2.0.0", {
-          "packageLocation": "./.yarn/cache/is-stream-npm-2.0.0-1401f82ad7-2.zip/node_modules/is-stream/",
-          "packageDependencies": [
-            ["is-stream", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -2291,7 +2181,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:13.11.1"],
             ["@types/sade", "npm:1.6.0"],
             ["@types/serve-handler", "npm:6.1.0"],
-            ["execa", "npm:4.0.0"],
             ["fs-extra", "npm:9.0.0"],
             ["looc-loader", "workspace:looc-loader"],
             ["rollup", "npm:2.3.4"],
@@ -2367,15 +2256,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["merge-stream", [
-        ["npm:2.0.0", {
-          "packageLocation": "./.yarn/cache/merge-stream-npm-2.0.0-2ac83efea5-2.zip/node_modules/merge-stream/",
-          "packageDependencies": [
-            ["merge-stream", "npm:2.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["merge2", [
         ["npm:1.3.0", {
           "packageLocation": "./.yarn/cache/merge2-npm-1.3.0-a272445bb5-2.zip/node_modules/merge2/",
@@ -2426,15 +2306,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["mime-types", "npm:2.1.26"],
             ["mime-db", "npm:1.43.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["mimic-fn", [
-        ["npm:2.1.0", {
-          "packageLocation": "./.yarn/cache/mimic-fn-npm-2.1.0-4fbeb3abb4-2.zip/node_modules/mimic-fn/",
-          "packageDependencies": [
-            ["mimic-fn", "npm:2.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -2552,16 +2423,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["npm-run-path", [
-        ["npm:4.0.1", {
-          "packageLocation": "./.yarn/cache/npm-run-path-npm-4.0.1-7aebd8bab3-2.zip/node_modules/npm-run-path/",
-          "packageDependencies": [
-            ["npm-run-path", "npm:4.0.1"],
-            ["path-key", "npm:3.1.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["npmlog", [
         ["npm:4.1.2", {
           "packageLocation": "./.yarn/cache/npmlog-npm-4.1.2-cfb32957b5-2.zip/node_modules/npmlog/",
@@ -2608,16 +2469,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["once", "npm:1.4.0"],
             ["wrappy", "npm:1.0.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["onetime", [
-        ["npm:5.1.0", {
-          "packageLocation": "./.yarn/cache/onetime-npm-5.1.0-8d9e23c1e0-2.zip/node_modules/onetime/",
-          "packageDependencies": [
-            ["onetime", "npm:5.1.0"],
-            ["mimic-fn", "npm:2.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -2714,13 +2565,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["path-key", "npm:2.0.1"]
           ],
           "linkType": "HARD",
-        }],
-        ["npm:3.1.1", {
-          "packageLocation": "./.yarn/cache/path-key-npm-3.1.1-0e66ea8321-2.zip/node_modules/path-key/",
-          "packageDependencies": [
-            ["path-key", "npm:3.1.1"]
-          ],
-          "linkType": "HARD",
         }]
       ]],
       ["path-parse", [
@@ -2795,17 +2639,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/psl-npm-1.8.0-226099d70e-2.zip/node_modules/psl/",
           "packageDependencies": [
             ["psl", "npm:1.8.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["pump", [
-        ["npm:3.0.0", {
-          "packageLocation": "./.yarn/cache/pump-npm-3.0.0-0080bf6a7a-2.zip/node_modules/pump/",
-          "packageDependencies": [
-            ["pump", "npm:3.0.0"],
-            ["end-of-stream", "npm:1.4.4"],
-            ["once", "npm:1.4.0"]
           ],
           "linkType": "HARD",
         }]
@@ -3137,14 +2970,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["shebang-regex", "npm:1.0.0"]
           ],
           "linkType": "HARD",
-        }],
-        ["npm:2.0.0", {
-          "packageLocation": "./.yarn/cache/shebang-command-npm-2.0.0-eb2b01921d-2.zip/node_modules/shebang-command/",
-          "packageDependencies": [
-            ["shebang-command", "npm:2.0.0"],
-            ["shebang-regex", "npm:3.0.0"]
-          ],
-          "linkType": "HARD",
         }]
       ]],
       ["shebang-regex", [
@@ -3152,13 +2977,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/shebang-regex-npm-1.0.0-c3612b74e9-2.zip/node_modules/shebang-regex/",
           "packageDependencies": [
             ["shebang-regex", "npm:1.0.0"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:3.0.0", {
-          "packageLocation": "./.yarn/cache/shebang-regex-npm-3.0.0-899a0cd65e-2.zip/node_modules/shebang-regex/",
-          "packageDependencies": [
-            ["shebang-regex", "npm:3.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -3227,15 +3045,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["strip-ansi", "npm:3.0.1"],
             ["ansi-regex", "npm:2.1.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["strip-final-newline", [
-        ["npm:2.0.0", {
-          "packageLocation": "./.yarn/cache/strip-final-newline-npm-2.0.0-340c4f7c66-2.zip/node_modules/strip-final-newline/",
-          "packageDependencies": [
-            ["strip-final-newline", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -3416,14 +3225,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/which-npm-1.3.1-f0ebb8bdd8-2.zip/node_modules/which/",
           "packageDependencies": [
             ["which", "npm:1.3.1"],
-            ["isexe", "npm:2.0.0"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:2.0.2", {
-          "packageLocation": "./.yarn/cache/which-npm-2.0.2-320ddf72f7-2.zip/node_modules/which/",
-          "packageDependencies": [
-            ["which", "npm:2.0.2"],
             ["isexe", "npm:2.0.0"]
           ],
           "linkType": "HARD",
