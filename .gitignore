@@ -4,3 +4,5 @@ build/
 !.yarn/cache
 !.yarn/releases
 !.yarn/plugins
+*.log
+.DS_Store

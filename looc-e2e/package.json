@@ -1,0 +1,9 @@
+{
+  "name": "looc-e2e",
+  "scripts": {
+    "say-hello": "storyline hello"
+  },
+  "dependencies": {
+    "looc": "workspace:looc"
+  }
+}

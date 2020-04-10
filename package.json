@@ -2,7 +2,8 @@
   "private": true,
   "workspaces": [
     "looc",
-    "looc-loader"
+    "looc-loader",
+    "looc-e2e"
   ],
   "devDependencies": {
     "@yarnpkg/pnpify": "^2.0.0-rc.20",

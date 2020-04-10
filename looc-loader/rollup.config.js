@@ -4,22 +4,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import json from "@rollup/plugin-json";
 
 export default {
-  input: "src/index.ts",
-  external: [
-    "typescript",
-    "path",
-    "fs",
-    "crypto",
-    "http",
-    "os",
-    "util",
-    "querystring",
-    "punycode",
-    "assert",
-    "stream",
-    "constants",
-    "events",
-  ],
+  input: "src/index.tsx",
   plugins: [
     commonjs({ sourceMap: false }),
     resolve({ preferBuiltins: false }),
