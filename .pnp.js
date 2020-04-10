@@ -1395,7 +1395,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rollup", "npm:2.4.0"],
             ["rollup-plugin-typescript2", "virtual:c2e615aab7b6ef1b222b8dcfd48a1fb36cf5d97fff11eb10d190f688a077017289ceab5afbbbf915309e83fa14815fb701a81f8bec817ec9edd69f1f2635f70a#npm:0.27.0"],
             ["tslib", "npm:1.11.1"],
-            ["tsx-ray", "npm:0.1.2"]
+            ["tsx-ray", "npm:0.1.2"],
+            ["typescript", "patch:typescript@npm%3A3.8.3#builtin<compat/typescript>::version=3.8.3&hash=270b6c"]
           ],
           "linkType": "SOFT",
         }]
@@ -2040,7 +2041,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["resolve", "patch:resolve@npm%3A1.15.1#builtin<compat/resolve>::version=1.15.1&hash=8fccd0"],
             ["rollup", "npm:2.4.0"],
             ["tslib", "npm:1.11.1"],
-            ["typescript", null]
+            ["typescript", "patch:typescript@npm%3A3.8.3#builtin<compat/typescript>::version=3.8.3&hash=270b6c"]
           ],
           "packagePeers": [
             "rollup",

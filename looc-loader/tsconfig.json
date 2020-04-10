@@ -28,12 +28,7 @@
     "module": "esnext",
     "jsx": "react",
     "paths": {
-      "/*.js": ["src/*.ts"],
-      "/web_modules/*.js": [
-        "src/web_modules/*.js",
-        "node_modules/*",
-        "node_modules/@types/*"
-      ]
+      "/*.js": ["src/*.ts"]
     }
   }
 }

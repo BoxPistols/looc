@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from "/web_modules/react.js";
-import ReactDOM from "/web_modules/react-dom.js";
-import { getPropTypesByComponent, isString } from "/helpers.js";
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import {
+  getPropTypesByComponent,
+  isString,
+  isBoolean,
+  isNumber,
+} from "/helpers.js";
 
 type PropTypes = ReturnType<ReturnType<typeof getPropTypesByComponent>>;
+type Property = PropTypes[keyof PropTypes];
 
 interface LoaderProps {
   debugMode?: boolean;
@@ -15,35 +21,27 @@ export const Loader: React.FC<LoaderProps> = ({ debugMode }) => {
 
   const createInputs = (propTypes: PropTypes) => {
     const inputs: JSX.Element[] = [];
+
+    const getInputType = (type: Property) => {
+      if (isNumber(type)) return "number";
+      if (isBoolean(type)) return "checkbox";
+      if (isString(type)) return "text";
+      return "text";
+    };
+
     for (const [prop, type] of Object.entries(propTypes)) {
-      console.log(isString(type));
-      if (type === "number") {
-        inputs.push(
-          <label className="prop-input">
-            {prop}:
-            <input
-              type="number"
-              onChange={(e) => {
-                const newProps = { ...props, [prop]: e.target.value };
-                setProps(newProps);
-              }}
-            ></input>
-          </label>
-        );
-      } else if (type === "string") {
-        inputs.push(
-          <label className="prop-input">
-            {prop}:
-            <input
-              type="text"
-              onChange={(e) => {
-                const newProps = { ...props, [prop]: e.target.value };
-                setProps(newProps);
-              }}
-            ></input>
-          </label>
-        );
-      }
+      inputs.push(
+        <label className="prop-input">
+          {prop}:
+          <input
+            type={getInputType(type)}
+            onChange={(e) => {
+              const newProps = { ...props, [prop]: e.target.value };
+              setProps(newProps);
+            }}
+          ></input>
+        </label>
+      );
     }
     return inputs;
   };
