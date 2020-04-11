@@ -19,6 +19,8 @@ export const Loader: React.FC = () => {
   const [propTypes, setPropTypes] = useState<PropTypes | null>(null);
   const [props, setProps] = useState({});
 
+  console.log("HELLO");
+
   const createInputs = (propTypes: PropTypes) => {
     const inputs: JSX.Element[] = [];
 
