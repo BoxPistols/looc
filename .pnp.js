@@ -3352,6 +3352,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["looc-loader", "workspace:looc-loader"],
             ["rimraf", "npm:3.0.2"],
             ["rollup", "npm:2.6.0"],
+            ["rollup-plugin-copy", "npm:3.3.0"],
             ["rollup-plugin-typescript2", "virtual:bfcfffe88fd61df077caa41114586842a32d01f5e8c979a932271b543853085a7068b5d3c41db4509842df4cd9d624b24ab60111603766d4c0299ad80db6a0c8#npm:0.27.0"],
             ["rollup-plugin-web-imports", "npm:0.1.0"],
             ["sade", "npm:1.7.3"],

@@ -1,4 +1,5 @@
 import typescript from "rollup-plugin-typescript2";
+import copy from "rollup-plugin-copy";
 
 export default {
   input: "src/index.ts",
@@ -19,7 +20,15 @@ export default {
     "rollup-plugin-typescript2",
     "rollup-plugin-web-imports",
   ],
-  plugins: [typescript()],
+  plugins: [
+    typescript(),
+    copy({
+      targets: [
+        { src: "src/web_modules", dest: "build" },
+        { src: "html", dest: "build" },
+      ],
+    }),
+  ],
   output: [
     {
       file: "build/index.cjs.js",

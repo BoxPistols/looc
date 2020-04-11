@@ -8,11 +8,8 @@
     "bin"
   ],
   "scripts": {
-    "build": "rimraf build && rollup -c && yarn copy-files",
-    "build:win": "rollup -c && yarn copy-files:win",
-    "copy-files": "cp -R html build && cp -R src/web_modules build",
-    "install-modules": "yarn dlx snowpack --source pika",
-    "copy-files:win": "xcopy html build\\html /i /e /h && xcopy \\src\\web_modules build\\web_modules /i /e /h"
+    "build": "rimraf build && rollup -c",
+    "install-modules": "yarn dlx snowpack --source pika"
   },
   "devDependencies": {
     "@rollup/plugin-json": "^4.0.2",
@@ -21,6 +18,7 @@
     "@types/sade": "^1.6.0",
     "@types/serve-handler": "^6.1.0",
     "rimraf": "^3.0.2",
+    "rollup-plugin-copy": "^3.3.0",
     "tslib": "^1.11.1"
   },
   "dependencies": {

@@ -1841,6 +1841,7 @@ fsevents@~2.1.2:
     looc-loader: "workspace:looc-loader"
     rimraf: ^3.0.2
     rollup: ^2.6.0
+    rollup-plugin-copy: ^3.3.0
     rollup-plugin-typescript2: ^0.27.0
     rollup-plugin-web-imports: ^0.1.0
     sade: ^1.7.3
