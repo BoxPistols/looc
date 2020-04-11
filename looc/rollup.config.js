@@ -7,6 +7,8 @@ export default {
   input: "src/index.ts",
   external: [
     "typescript",
+    "rollup-plugin-typescript2",
+    "rollup",
     "child_process",
     "path",
     "fs",

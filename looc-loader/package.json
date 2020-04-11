@@ -6,15 +6,17 @@
   ],
   "scripts": {
     "install-modules": "yarn dlx snowpack --source pika",
-    "build": "rollup -c"
+    "build": "rimraf build && rollup -c"
   },
   "devDependencies": {
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "rimraf": "^3.0.2",
     "rollup": "^2.4.0",
     "rollup-plugin-typescript2": "^0.27.0",
+    "rollup-plugin-web-imports": "^0.1.0",
     "tslib": "^1.11.1",
     "tsx-ray": "^0.1.2",
     "typescript": "^3.8.3"

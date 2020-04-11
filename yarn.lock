@@ -1097,6 +1097,8 @@ fsevents@~2.1.2:
     "@types/react": ^16.9.34
     looc: "workspace:looc"
     react: ^16.13.1
+    rollup: ^2.6.0
+    rollup-plugin-typescript2: ^0.27.0
     tslib: ^1.11.1
     typescript: ^3.8.3
   languageName: unknown
@@ -1110,8 +1112,10 @@ fsevents@~2.1.2:
     "@types/react-dom": ^16.9.6
     react: ^16.13.1
     react-dom: ^16.13.1
+    rimraf: ^3.0.2
     rollup: ^2.4.0
     rollup-plugin-typescript2: ^0.27.0
+    rollup-plugin-web-imports: ^0.1.0
     tslib: ^1.11.1
     tsx-ray: ^0.1.2
     typescript: ^3.8.3
@@ -1131,11 +1135,14 @@ fsevents@~2.1.2:
     "@types/serve-handler": ^6.1.0
     fs-extra: ^9.0.0
     looc-loader: "workspace:looc-loader"
-    rollup: ^2.3.4
+    rimraf: ^3.0.2
+    rollup: ^2.6.0
     rollup-plugin-typescript2: ^0.27.0
+    rollup-plugin-web-imports: ^0.1.0
     sade: ^1.7.3
     serve-handler: ^6.1.2
     ts-morph: ^7.0.2
+    tslib: ^1.11.1
     tsx-ray: ^0.1.2
     typescript: ^3.8.3
   bin:
@@ -1654,6 +1661,17 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"rimraf@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "rimraf@npm:3.0.2"
+  dependencies:
+    glob: ^7.1.3
+  bin:
+    rimraf: bin.js
+  checksum: 2/f0de3e445581e64a8a077af476cc30708e659f5779ec2ca2a161556d0792aa318a685923798ae22055b4ecd02b9aff444ef619578f7af53cf8e0e248031e3dee
+  languageName: node
+  linkType: hard
+
 "rollup-plugin-typescript2@npm:^0.27.0":
   version: 0.27.0
   resolution: "rollup-plugin-typescript2@npm:0.27.0"
@@ -1670,17 +1688,10 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.3.4":
-  version: 2.3.4
-  resolution: "rollup@npm:2.3.4"
-  dependencies:
-    fsevents: ~2.1.2
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  bin:
-    rollup: dist/bin/rollup
-  checksum: 2/4d727d22f77d000e4aa8336afa511fa7aff4f70d30a2bc68e23ba328e2f10bb86fb57e728663e90981517ec76ccc4fef5e291a0a0ce54f02e3e474d1af26e2e3
+"rollup-plugin-web-imports@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "rollup-plugin-web-imports@npm:0.1.0"
+  checksum: 2/8ac79ebd8458c1287d393f8957a36cd1442f8975b347e5cfddd96a288c4e08f8978ddc08a6f88c5d687ac2e4029a7226c84b21fdd02830344bd10a71d5b76e7e
   languageName: node
   linkType: hard
 
@@ -1695,6 +1706,20 @@ fsevents@~2.1.2:
   bin:
     rollup: dist/bin/rollup
   checksum: 2/05eb0f1c296d6482a9668664f5e9948297f050c42beb6ca36ee3348fb4bbe6883dea3fd883b15792e69c33afc5d83d1b0cfb5dea429ff425b7c6fba14d46db6d
+  languageName: node
+  linkType: hard
+
+"rollup@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "rollup@npm:2.6.0"
+  dependencies:
+    fsevents: ~2.1.2
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    rollup: dist/bin/rollup
+  checksum: 2/52db6b2998b9e05c4fea0c8a4a4f8de710e71e11c1069d1e10b5ba116957b625c28590ea06c67e5b280204cb1affed00eb7357df0d44fa0ec33b1312b9538d9f
   languageName: node
   linkType: hard
 

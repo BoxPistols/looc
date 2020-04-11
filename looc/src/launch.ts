@@ -5,6 +5,12 @@ import path from "path";
 import handler from "serve-handler";
 import http from "http";
 import fs from "fs-extra";
+import rollup from "rollup";
+import typescript from "rollup-plugin-typescript2";
+import webImports from "rollup-plugin-web-imports";
+/* import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import json from "@rollup/plugin-json"; */
 
 export const launch = async (filepath: string) => {
   const cwd = process.cwd();
@@ -51,12 +57,36 @@ export const launch = async (filepath: string) => {
   };
 
   if (!fs.existsSync(cacheDir)) {
-    fs.mkdirSync(cacheDir);
+    await fs.mkdir(cacheDir);
+  } else {
+    await fs.remove(cacheDir);
+    await fs.mkdir(cacheDir);
   }
+
+  const inputOpts = {
+    input: path.join(cwd, filepath),
+    plugins: [
+      typescript(),
+      webImports({
+        react: "./web_modules/react.js",
+        "react-dom": "./web_modules/react-dom.js",
+      }),
+    ],
+  };
+
+  const outputOpts = {
+    dir: cacheDir,
+  };
 
   await fs.writeFile(path.join(cacheDir, "data.json"), JSON.stringify(data));
 
-  project.emitSync();
+  //project.emitSync();
+
+  const bundle = await rollup.rollup(inputOpts);
+
+  await bundle.generate(outputOpts);
+
+  await bundle.write(outputOpts);
 
   await fs.copy(htmlDir, cacheDir);
   await fs.copy(modulesDir, path.join(cacheDir, "web_modules"));

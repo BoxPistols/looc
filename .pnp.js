@@ -61,8 +61,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:1.2.4"
       ],
       [
+        "@rollup/plugin-commonjs",
+        "virtual:bfcfffe88fd61df077caa41114586842a32d01f5e8c979a932271b543853085a7068b5d3c41db4509842df4cd9d624b24ab60111603766d4c0299ad80db6a0c8#npm:11.0.2"
+      ],
+      [
+        "@rollup/plugin-json",
+        "virtual:bfcfffe88fd61df077caa41114586842a32d01f5e8c979a932271b543853085a7068b5d3c41db4509842df4cd9d624b24ab60111603766d4c0299ad80db6a0c8#npm:4.0.2"
+      ],
+      [
+        "@rollup/plugin-node-resolve",
+        "virtual:bfcfffe88fd61df077caa41114586842a32d01f5e8c979a932271b543853085a7068b5d3c41db4509842df4cd9d624b24ab60111603766d4c0299ad80db6a0c8#npm:7.1.1"
+      ],
+      [
         "@rollup/pluginutils",
-        "virtual:60c91f3f6b111854d7f39d7fa4c1089bb525ce4ebde690b5a5966d5907dc6fcd64370065c06d48030084ad46d0cf0559e8a6cdf01dc73c17187656e0184275f2#npm:3.0.8"
+        "virtual:b7801fef3aae3f384d70ff37525c847effe276ff959b75a01ccac45afe0e3f5b61585d8fb1c2707d12fd432f16897129b353949542f4394d0b04c0755ff462c3#npm:3.0.8"
       ],
       [
         "@ts-morph/common",
@@ -734,15 +746,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "rimraf",
-        "npm:2.7.1"
+        "npm:3.0.2"
       ],
       [
         "rollup",
-        "npm:2.4.0"
+        "npm:2.6.0"
       ],
       [
         "rollup-plugin-typescript2",
-        "virtual:c2e615aab7b6ef1b222b8dcfd48a1fb36cf5d97fff11eb10d190f688a077017289ceab5afbbbf915309e83fa14815fb701a81f8bec817ec9edd69f1f2635f70a#npm:0.27.0"
+        "virtual:bfcfffe88fd61df077caa41114586842a32d01f5e8c979a932271b543853085a7068b5d3c41db4509842df4cd9d624b24ab60111603766d4c0299ad80db6a0c8#npm:0.27.0"
+      ],
+      [
+        "rollup-plugin-web-imports",
+        "npm:0.1.0"
       ],
       [
         "run-parallel",
@@ -954,7 +970,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-reference", "npm:1.1.4"],
             ["magic-string", "npm:0.25.7"],
             ["resolve", "patch:resolve@npm%3A1.15.1#builtin<compat/resolve>::version=1.15.1&hash=8fccd0"],
-            ["rollup", "npm:2.3.4"]
+            ["rollup", "npm:2.6.0"]
           ],
           "packagePeers": [
             "rollup"
@@ -968,7 +984,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@rollup/plugin-json", "virtual:bfcfffe88fd61df077caa41114586842a32d01f5e8c979a932271b543853085a7068b5d3c41db4509842df4cd9d624b24ab60111603766d4c0299ad80db6a0c8#npm:4.0.2"],
             ["@rollup/pluginutils", "virtual:b7801fef3aae3f384d70ff37525c847effe276ff959b75a01ccac45afe0e3f5b61585d8fb1c2707d12fd432f16897129b353949542f4394d0b04c0755ff462c3#npm:3.0.8"],
-            ["rollup", "npm:2.3.4"]
+            ["rollup", "npm:2.6.0"]
           ],
           "packagePeers": [
             "rollup"
@@ -986,7 +1002,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["builtin-modules", "npm:3.1.0"],
             ["is-module", "npm:1.0.0"],
             ["resolve", "patch:resolve@npm%3A1.15.1#builtin<compat/resolve>::version=1.15.1&hash=8fccd0"],
-            ["rollup", "npm:2.3.4"]
+            ["rollup", "npm:2.6.0"]
           ],
           "packagePeers": [
             "rollup"
@@ -1012,7 +1028,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@rollup/pluginutils", "virtual:b7801fef3aae3f384d70ff37525c847effe276ff959b75a01ccac45afe0e3f5b61585d8fb1c2707d12fd432f16897129b353949542f4394d0b04c0755ff462c3#npm:3.0.8"],
             ["estree-walker", "npm:1.0.1"],
-            ["rollup", "npm:2.3.4"]
+            ["rollup", "npm:2.6.0"]
           ],
           "packagePeers": [
             "rollup"
@@ -2183,11 +2199,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/serve-handler", "npm:6.1.0"],
             ["fs-extra", "npm:9.0.0"],
             ["looc-loader", "workspace:looc-loader"],
-            ["rollup", "npm:2.3.4"],
+            ["rimraf", "npm:3.0.2"],
+            ["rollup", "npm:2.6.0"],
             ["rollup-plugin-typescript2", "virtual:bfcfffe88fd61df077caa41114586842a32d01f5e8c979a932271b543853085a7068b5d3c41db4509842df4cd9d624b24ab60111603766d4c0299ad80db6a0c8#npm:0.27.0"],
+            ["rollup-plugin-web-imports", "npm:0.1.0"],
             ["sade", "npm:1.7.3"],
             ["serve-handler", "npm:6.1.2"],
             ["ts-morph", "npm:7.0.2"],
+            ["tslib", "npm:1.11.1"],
             ["tsx-ray", "npm:0.1.2"],
             ["typescript", "patch:typescript@npm%3A3.8.3#builtin<compat/typescript>::version=3.8.3&hash=270b6c"]
           ],
@@ -2202,6 +2221,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:16.9.34"],
             ["looc", "workspace:looc"],
             ["react", "npm:16.13.1"],
+            ["rollup", "npm:2.6.0"],
+            ["rollup-plugin-typescript2", "virtual:bfcfffe88fd61df077caa41114586842a32d01f5e8c979a932271b543853085a7068b5d3c41db4509842df4cd9d624b24ab60111603766d4c0299ad80db6a0c8#npm:0.27.0"],
             ["tslib", "npm:1.11.1"],
             ["typescript", "patch:typescript@npm%3A3.8.3#builtin<compat/typescript>::version=3.8.3&hash=270b6c"]
           ],
@@ -2217,8 +2238,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:16.9.6"],
             ["react", "npm:16.13.1"],
             ["react-dom", "virtual:c2e615aab7b6ef1b222b8dcfd48a1fb36cf5d97fff11eb10d190f688a077017289ceab5afbbbf915309e83fa14815fb701a81f8bec817ec9edd69f1f2635f70a#npm:16.13.1"],
+            ["rimraf", "npm:3.0.2"],
             ["rollup", "npm:2.4.0"],
             ["rollup-plugin-typescript2", "virtual:c2e615aab7b6ef1b222b8dcfd48a1fb36cf5d97fff11eb10d190f688a077017289ceab5afbbbf915309e83fa14815fb701a81f8bec817ec9edd69f1f2635f70a#npm:0.27.0"],
+            ["rollup-plugin-web-imports", "npm:0.1.0"],
             ["tslib", "npm:1.11.1"],
             ["tsx-ray", "npm:0.1.2"],
             ["typescript", "patch:typescript@npm%3A3.8.3#builtin<compat/typescript>::version=3.8.3&hash=270b6c"]
@@ -2796,21 +2819,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["glob", "npm:7.1.6"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:3.0.2", {
+          "packageLocation": "./.yarn/cache/rimraf-npm-3.0.2-2cb7dac69a-2.zip/node_modules/rimraf/",
+          "packageDependencies": [
+            ["rimraf", "npm:3.0.2"],
+            ["glob", "npm:7.1.6"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["rollup", [
-        ["npm:2.3.4", {
-          "packageLocation": "./.yarn/cache/rollup-npm-2.3.4-fcd7a5bd8e-2.zip/node_modules/rollup/",
-          "packageDependencies": [
-            ["rollup", "npm:2.3.4"],
-            ["fsevents", "patch:fsevents@npm%3A2.1.2#builtin<compat/fsevents>::version=2.1.2&hash=77dfe6"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:2.4.0", {
           "packageLocation": "./.yarn/cache/rollup-npm-2.4.0-466ac2b15f-2.zip/node_modules/rollup/",
           "packageDependencies": [
             ["rollup", "npm:2.4.0"],
+            ["fsevents", "patch:fsevents@npm%3A2.1.2#builtin<compat/fsevents>::version=2.1.2&hash=77dfe6"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.6.0", {
+          "packageLocation": "./.yarn/cache/rollup-npm-2.6.0-d57aad504d-2.zip/node_modules/rollup/",
+          "packageDependencies": [
+            ["rollup", "npm:2.6.0"],
             ["fsevents", "patch:fsevents@npm%3A2.1.2#builtin<compat/fsevents>::version=2.1.2&hash=77dfe6"]
           ],
           "linkType": "HARD",
@@ -2825,7 +2856,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["find-cache-dir", "npm:3.3.1"],
             ["fs-extra", "npm:8.1.0"],
             ["resolve", "patch:resolve@npm%3A1.15.1#builtin<compat/resolve>::version=1.15.1&hash=8fccd0"],
-            ["rollup", "npm:2.3.4"],
+            ["rollup", "npm:2.6.0"],
             ["tslib", "npm:1.11.1"],
             ["typescript", "patch:typescript@npm%3A3.8.3#builtin<compat/typescript>::version=3.8.3&hash=270b6c"]
           ],
@@ -2850,6 +2881,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [
             "rollup",
             "typescript"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["rollup-plugin-web-imports", [
+        ["npm:0.1.0", {
+          "packageLocation": "./.yarn/cache/rollup-plugin-web-imports-npm-0.1.0-6d56f35c84-2.zip/node_modules/rollup-plugin-web-imports/",
+          "packageDependencies": [
+            ["rollup-plugin-web-imports", "npm:0.1.0"]
           ],
           "linkType": "HARD",
         }]
