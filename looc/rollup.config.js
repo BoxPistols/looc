@@ -1,34 +1,25 @@
 import typescript from "rollup-plugin-typescript2";
-import commonjs from "@rollup/plugin-commonjs";
-import resolve from "@rollup/plugin-node-resolve";
-import json from "@rollup/plugin-json";
 
 export default {
   input: "src/index.ts",
   external: [
+    "path",
+    "http",
     "typescript",
     "rollup-plugin-typescript2",
     "rollup",
-    "child_process",
-    "path",
-    "fs",
-    "crypto",
-    "http",
-    "os",
-    "util",
-    "querystring",
-    "punycode",
-    "assert",
-    "stream",
-    "constants",
-    "events",
+    "ts-morph",
+    "tsx-ray",
+    "sade",
+    "serve-handler",
+    "rollup",
+    "fs-extra",
+    "@rollup/plugin-commonjs",
+    "@rollup/plugin-node-resolve",
+    "rollup-plugin-typescript2",
+    "rollup-plugin-web-imports",
   ],
-  plugins: [
-    commonjs({ sourceMap: false }),
-    resolve({ preferBuiltins: false }),
-    typescript(),
-    json(),
-  ],
+  plugins: [typescript()],
   output: [
     {
       file: "build/index.cjs.js",

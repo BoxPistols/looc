@@ -1,10 +1,9 @@
 {
-  "include": ["src", "types"],
+  "include": ["src", "types", "web_modules"],
   "compilerOptions": {
     "lib": ["dom", "esnext"],
     "target": "es2017",
     "outDir": "./build",
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "importHelpers": true,

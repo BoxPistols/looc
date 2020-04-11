@@ -7,14 +7,14 @@ import {
   isNumber,
 } from "/helpers.js";
 
+declare global {
+  const __DEBUG__: boolean;
+}
+
 type PropTypes = ReturnType<ReturnType<typeof getPropTypesByComponent>>;
 type Property = PropTypes[keyof PropTypes];
 
-interface LoaderProps {
-  debugMode?: boolean;
-}
-
-export const Loader: React.FC<LoaderProps> = ({ debugMode }) => {
+export const Loader: React.FC = () => {
   const [imports, setImports] = useState<{ component: React.FC } | null>(null);
   const [propTypes, setPropTypes] = useState<PropTypes | null>(null);
   const [props, setProps] = useState({});
@@ -47,35 +47,37 @@ export const Loader: React.FC<LoaderProps> = ({ debugMode }) => {
   };
 
   useEffect(() => {
-    const loadComponent = async () => {
-      const response = await fetch("data.json");
-      const data = await response.json();
-      return import(`/${data.filepath}`)
-        .then(({ default: component }) => {
-          console.log(`Successfully imported ${data.filepath}!`);
+    if (!__DEBUG__) {
+      const loadComponent = async () => {
+        const response = await fetch("data.json");
+        const data = await response.json();
+        return import(`/${data.filepath}`)
+          .then(({ default: component }) => {
+            console.log(`Successfully imported ${data.filepath}!`);
 
-          const propTypes = getPropTypesByComponent(component.name)(
-            data.interfaces
+            const propTypes = getPropTypesByComponent(component.name)(
+              data.interfaces
+            );
+
+            console.log("Prop types: ", propTypes);
+
+            setPropTypes(propTypes);
+            setImports({ component });
+          })
+          .catch((e) =>
+            console.log(`There was a problem importing ${data.filepath}!`, e)
           );
+      };
 
-          console.log("Prop types: ", propTypes);
-
-          setPropTypes(propTypes);
-          setImports({ component });
-        })
-        .catch((e) =>
-          console.log(`There was a problem importing ${data.filepath}!`, e)
-        );
-    };
-
-    loadComponent();
+      loadComponent();
+    }
   }, []);
+
+  if (__DEBUG__) return <div>Debug</div>;
 
   if (!imports) return null;
 
   const { component: Component } = imports;
-
-  if (debugMode) return <div>Debug</div>;
 
   return (
     <div>

@@ -26,11 +26,11 @@
   "dependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "rollup-plugin-typescript2": "^0.27.0",
-    "rollup-plugin-web-imports": "^0.1.0",
     "fs-extra": "^9.0.0",
     "looc-loader": "workspace:looc-loader",
     "rollup": "^2.6.0",
+    "rollup-plugin-typescript2": "^0.27.0",
+    "rollup-plugin-web-imports": "^0.1.0",
     "sade": "^1.7.3",
     "serve-handler": "^6.1.2",
     "ts-morph": "^7.0.2",
