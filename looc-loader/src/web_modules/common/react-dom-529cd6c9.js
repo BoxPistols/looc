@@ -1,4 +1,4 @@
-import { R as React } from './common/react-b2787d40.js';
+import { R as React__default } from './react-d0ba784a.js';
 
 /** @license React v16.13.0
  * react-dom.development.js
@@ -25174,8 +25174,7 @@ const ReactDOM = {};
   exports.unstable_renderSubtreeIntoContainer = renderSubtreeIntoContainer;
   exports.version = ReactVersion;
 
-}(ReactDOM, React));
+}(ReactDOM, React__default));
 const {__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED,createPortal,findDOMNode,flushSync,hydrate,render,unmountComponentAtNode,unstable_batchedUpdates,unstable_createPortal,unstable_renderSubtreeIntoContainer,version} = ReactDOM;
 
-export default ReactDOM;
-export { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, createPortal, findDOMNode, flushSync, hydrate, render, unmountComponentAtNode, unstable_batchedUpdates, unstable_createPortal, unstable_renderSubtreeIntoContainer, version };
+export { ReactDOM as R, __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED as _, flushSync as a, unstable_batchedUpdates as b, createPortal as c, unstable_createPortal as d, unstable_renderSubtreeIntoContainer as e, findDOMNode as f, hydrate as h, render as r, unmountComponentAtNode as u, version as v };

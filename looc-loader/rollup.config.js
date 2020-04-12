@@ -11,17 +11,17 @@ export default {
     webImports({
       react: "./react.js",
       "react-dom": "./react-dom.js",
+      "@material-ui/core": "./@material-ui/core.js",
     }),
-    copy(
-      process.env.DEV && {
-        targets: [
-          { src: "web_modules/*", dest: "build" },
-          { src: "html/*", dest: "build" },
-        ],
-      }
-    ),
-    process.env.DEV && serve("build"),
-    process.env.DEV && livereload({ watch: "build" }),
+    /* process.env.DEV && */
+    copy({
+      targets: [
+        { src: "src/web_modules/*", dest: "build" },
+        { src: "html/*", dest: "build" },
+      ],
+    }),
+    /* process.env.DEV &&  */ serve("build"),
+    /* process.env.DEV &&  */ livereload({ watch: "build" }),
   ],
   output: [
     {

@@ -5,7 +5,10 @@ import {
   isString,
   isBoolean,
   isNumber,
+  isObject,
 } from "/helpers.js";
+import { InterfaceDefinition } from "tsx-ray/dist/types";
+import { Checkbox, TextField, Input } from "@material-ui/core";
 
 declare global {
   const __DEBUG__: boolean;
@@ -14,10 +17,32 @@ declare global {
 type PropTypes = ReturnType<ReturnType<typeof getPropTypesByComponent>>;
 type Property = PropTypes[keyof PropTypes];
 
-export const Loader: React.FC = () => {
-  const [imports, setImports] = useState<{ component: React.FC } | null>(null);
-  const [propTypes, setPropTypes] = useState<PropTypes | null>(null);
-  const [props, setProps] = useState({});
+type ChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+const setDefaultValues = (propTypes: PropTypes) => {
+  const defaultProps: Record<string, number | string | boolean | object> = {};
+  for (const [prop, type] of Object.entries(propTypes)) {
+    if (isNumber(type)) defaultProps[prop] = 0;
+    if (isBoolean(type)) defaultProps[prop] = false;
+    if (isString(type)) defaultProps[prop] = "Text";
+    if (isObject(type))
+      defaultProps[prop] = setDefaultValues(type as PropTypes);
+  }
+  return defaultProps;
+};
+
+export const Loader: React.FC<typeof debugLoaderProps> = ({
+  debugProps,
+  debugPropTypes,
+  debugComponent,
+}: any) => {
+  const [imports, setImports] = useState<{ component: React.FC } | null>(
+    debugComponent || null
+  );
+  const [propTypes, setPropTypes] = useState<PropTypes | null>(
+    debugPropTypes || null
+  );
+  const [props, setProps] = useState(debugProps || {});
 
   console.log("HELLO");
 
@@ -31,17 +56,59 @@ export const Loader: React.FC = () => {
       return "text";
     };
 
+    const createCheckboxInput = (handleChange: ChangeHandler) => (
+      <Checkbox defaultChecked={false} onChange={handleChange}></Checkbox>
+    );
+
+    const createNumberInput = (handleChange: ChangeHandler) => (
+      <Input type="number" defaultValue="0" onChange={handleChange}></Input>
+    );
+
+    const createTextInput = (handleChange: ChangeHandler) => (
+      <TextField
+        onChange={handleChange}
+        label="Default text"
+        variant="filled"
+      />
+    );
+
     for (const [prop, type] of Object.entries(propTypes)) {
+      const inputType = getInputType(type);
+      const input = (() => {
+        switch (inputType) {
+          case "checkbox": {
+            const handleChange: ChangeHandler = (e) => {
+              console.log(e.target.checked);
+              console.log({ ...props, [prop]: e.target.checked });
+              setProps({ ...props, [prop]: e.target.checked });
+            };
+
+            return createCheckboxInput(handleChange);
+          }
+          case "text": {
+            const handleChange: ChangeHandler = (e) =>
+              setProps({ ...props, [prop]: e.target.value });
+
+            return createTextInput(handleChange);
+          }
+          case "number": {
+            const handleChange: ChangeHandler = (e) =>
+              setProps({ ...props, [prop]: e.target.value });
+
+            return createNumberInput(handleChange);
+          }
+          default: {
+            const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+              setProps({ ...props, [prop]: e.target.value });
+
+            return createTextInput(handleChange);
+          }
+        }
+      })();
+
       inputs.push(
         <label className="prop-input">
-          {prop}:
-          <input
-            type={getInputType(type)}
-            onChange={(e) => {
-              const newProps = { ...props, [prop]: e.target.value };
-              setProps(newProps);
-            }}
-          ></input>
+          {prop}:{input}
         </label>
       );
     }
@@ -65,6 +132,7 @@ export const Loader: React.FC = () => {
 
             setPropTypes(propTypes);
             setImports({ component });
+            setProps(setDefaultValues(propTypes));
           })
           .catch((e) =>
             console.log(`There was a problem importing ${data.filepath}!`, e)
@@ -74,8 +142,6 @@ export const Loader: React.FC = () => {
       loadComponent();
     }
   }, []);
-
-  if (__DEBUG__) return <div>Debug</div>;
 
   if (!imports) return null;
 
@@ -89,4 +155,35 @@ export const Loader: React.FC = () => {
   );
 };
 
-ReactDOM.render(<Loader />, document.getElementById("root"));
+const defaultDebugPropTypes = {
+  isChecked: "boolean",
+  count: "number",
+  text: "string",
+};
+const defaultDebugProps = setDefaultValues(
+  defaultDebugPropTypes as InterfaceDefinition
+);
+
+const DebugComponent = (props: typeof defaultDebugProps) => {
+  console.log(props);
+  return (
+    <div>
+      <div>isChecked: {props.isChecked ? "CHECKED" : "UNCHECKED"}</div>
+      <div>number: {props.count}</div>
+      <div>text: {props.text}</div>
+    </div>
+  );
+};
+
+const debugLoaderProps = {
+  debugComponent: {
+    component: DebugComponent,
+  },
+  debugPropTypes: defaultDebugPropTypes,
+  debugProps: defaultDebugProps,
+};
+
+ReactDOM.render(
+  <Loader {...debugLoaderProps} />,
+  document.getElementById("root")
+);
