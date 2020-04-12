@@ -4,9 +4,12 @@ import copy from "rollup-plugin-copy";
 export default {
   input: "src/index.ts",
   external: [
+    "has-yarn",
+    "execa",
     "path",
     "http",
     "typescript",
+    "rollup-plugin-postcss",
     "rollup-plugin-typescript2",
     "rollup",
     "ts-morph",
@@ -15,8 +18,6 @@ export default {
     "serve-handler",
     "rollup",
     "fs-extra",
-    "@rollup/plugin-commonjs",
-    "@rollup/plugin-node-resolve",
     "rollup-plugin-typescript2",
     "rollup-plugin-web-imports",
   ],
