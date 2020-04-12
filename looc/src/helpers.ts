@@ -26,6 +26,9 @@ export const snowpackInstall = async (
   dest: string,
   pkgm: PkgManager
 ) => {
+  if (libs.length === 0) {
+    return;
+  }
   const snowpackConfig = {
     webDependencies: libs,
     installOptions: {
