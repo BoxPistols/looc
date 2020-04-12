@@ -5,13 +5,6 @@ import path from "path";
 
 type Interfaces = ReturnType<typeof extractInterfaces>;
 
-export const getPropTypesByComponent = (componentName: string) => (
-  interfaces: Interfaces
-) => {
-  const propTypes = `${componentName}Props`;
-  return interfaces[propTypes];
-};
-
 export type StyleLibrary =
   | "@emotion/core"
   | "styled-components"
@@ -19,7 +12,20 @@ export type StyleLibrary =
   | "react-dom"
   | "";
 
-export const snowpackInstall = async (libs: StyleLibrary[], dest: string) => {
+export type PkgManager = "yarn" | "npm";
+
+export const getPropTypesByComponent = (componentName: string) => (
+  interfaces: Interfaces
+) => {
+  const propTypes = `${componentName}Props`;
+  return interfaces[propTypes];
+};
+
+export const snowpackInstall = async (
+  libs: StyleLibrary[],
+  dest: string,
+  pkgm: PkgManager
+) => {
   const snowpackConfig = {
     webDependencies: [...libs],
     installOptions: {
@@ -31,8 +37,8 @@ export const snowpackInstall = async (libs: StyleLibrary[], dest: string) => {
       sourceMap: true,
     },
   };
-
+  const cmd = pkgm === "yarn" ? "yarn dlx" : "npx";
   const configPath = path.join(dest, "snowpack.config.json");
   await fs.outputJSON(configPath, snowpackConfig);
-  await execa(`yarn dlx snowpack --config ${configPath} --source pika`);
+  await execa(`${cmd} snowpack --config ${configPath} --source pika`);
 };

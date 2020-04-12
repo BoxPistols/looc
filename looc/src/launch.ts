@@ -9,8 +9,7 @@ import rollup from "rollup";
 import typescript from "rollup-plugin-typescript2";
 import webImports from "rollup-plugin-web-imports";
 import postcss from "rollup-plugin-postcss";
-// import execa from "execa";
-// import hasYarn from "has-yarn";
+import hasYarn from "has-yarn";
 import { snowpackInstall } from "./helpers";
 
 export const launch = async (
@@ -68,9 +67,13 @@ export const launch = async (
     return "";
   });
 
+  const yarn = hasYarn(cwd);
+  const cmd = yarn ? "yarn" : "npm";
+
   await snowpackInstall(
     [...libsToInstall.filter(Boolean), "react", "react-dom"],
-    cacheDir
+    cacheDir,
+    cmd
   );
 
   const otherWebImports = Object.keys(options).reduce(

@@ -4,10 +4,7 @@ import copy from "rollup-plugin-copy";
 export default {
   input: "src/index.ts",
   external: [
-    "react",
-    "react-dom",
-    "react-is",
-    "prop-types",
+    "has-yarn",
     "execa",
     "path",
     "http",
@@ -21,8 +18,6 @@ export default {
     "serve-handler",
     "rollup",
     "fs-extra",
-    "@rollup/plugin-commonjs",
-    "@rollup/plugin-node-resolve",
     "rollup-plugin-typescript2",
     "rollup-plugin-web-imports",
   ],
