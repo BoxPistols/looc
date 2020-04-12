@@ -26,6 +26,7 @@
     "has-yarn": "^2.1.0",
     "looc-loader": "workspace:looc-loader",
     "rollup": "^2.6.0",
+    "rollup-plugin-banner": "^0.2.1",
     "rollup-plugin-postcss": "^2.5.0",
     "rollup-plugin-typescript2": "^0.27.0",
     "rollup-plugin-web-imports": "^0.1.0",

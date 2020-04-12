@@ -10,6 +10,7 @@ import typescript from "rollup-plugin-typescript2";
 import webImports from "rollup-plugin-web-imports";
 import postcss from "rollup-plugin-postcss";
 import hasYarn from "has-yarn";
+// import banner from "rollup-plugin-banner";
 import { snowpackInstall } from "./helpers";
 
 export const launch = async (
@@ -23,12 +24,17 @@ export const launch = async (
 
   const cacheDir = path.join(cwd, `.cache`);
 
+  const isEmotion = options["emotion"];
+
+  console.log(isEmotion);
+
   const project = new Project({
     compilerOptions: {
       outDir: path.join(cacheDir),
       module: ts.ModuleKind.ESNext,
       declaration: false,
-      jsx: ts.JsxEmit.React,
+      jsx: isEmotion ? ts.JsxEmit.None : ts.JsxEmit.React,
+      // jsxFactory: isEmotion ? "jsx" : undefined,
     },
   });
 
@@ -47,34 +53,49 @@ export const launch = async (
 
   const parsedInterfaces = extractInterfaces(sourceFile);
 
-  const data = {
-    interfaces: parsedInterfaces,
-    filepath: sourceFilename,
-  };
-
-  if (!fs.existsSync(cacheDir)) {
-    await fs.mkdir(cacheDir);
-  } else {
-    await fs.remove(cacheDir);
-    await fs.mkdir(cacheDir);
-  }
-
-  const libsToInstall = Object.entries(options).map(([lib, value]) => {
+  const styleLibs = Object.entries(options).map(([lib, value]) => {
     if (value) {
-      if (lib === "emotion") return "@emotion/core";
+      if (lib === "emotion") return ["@emotion/core", "@emotion/styled"];
       if (lib === "styled-components") return lib;
     }
     return "";
   });
 
+  const allLibs = [...styleLibs.flat().filter(Boolean), "react", "react-dom"];
+
+  let cachedData: any;
+
+  try {
+    cachedData = await fs.readJSON(path.join(cacheDir, "data.json"));
+  } catch {}
+
+  const data = {
+    interfaces: parsedInterfaces,
+    filepath: sourceFilename,
+    installedLibs: cachedData ? cachedData.installedLibs : allLibs,
+  };
+
+  if (!fs.existsSync(cacheDir)) {
+    await fs.mkdir(cacheDir);
+  } else {
+    if (options.clean) {
+      await fs.remove(cacheDir);
+      await fs.mkdir(cacheDir);
+    }
+  }
+
+  await fs.writeFile(path.join(cacheDir, "data.json"), JSON.stringify(data));
+
   const yarn = hasYarn(cwd);
   const cmd = yarn ? "yarn" : "npm";
 
-  await snowpackInstall(
-    [...libsToInstall.filter(Boolean), "react", "react-dom"],
-    cacheDir,
-    cmd
-  );
+  const uninstalledLibs = cachedData
+    ? allLibs.filter((lib) => !cachedData.installedLibs.includes(lib))
+    : allLibs;
+
+  await snowpackInstall(uninstalledLibs, cacheDir, cmd);
+
+  console.log("installed", uninstalledLibs);
 
   const otherWebImports = Object.keys(options).reduce(
     (imports: object, opt: string) => {
@@ -82,7 +103,8 @@ export const launch = async (
         if (opt === "emotion") {
           return {
             ...imports,
-            "@emotion/core": "/web_modules/emotion.js",
+            "@emotion/core": "/web_modules/@emotion/core.js",
+            "@emotion/styled": "/web_modules/@emotion/styled.js",
           };
         }
         if (opt === "styled-components") {
@@ -115,9 +137,8 @@ export const launch = async (
 
   const outputOpts = {
     dir: cacheDir,
+    //plugins: [banner()],
   };
-
-  await fs.writeFile(path.join(cacheDir, "data.json"), JSON.stringify(data));
 
   //project.emitSync();
 

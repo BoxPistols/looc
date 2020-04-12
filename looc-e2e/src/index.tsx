@@ -1,7 +1,11 @@
+/** @jsx jsx */
+
 import React from "react";
 import add from "./add";
 import Div from "./components/comp";
-import styled from "styled-components";
+// import styled from "styled-components";
+import { css, jsx } from "@emotion/core";
+import styled from "@emotion/styled";
 
 const H1 = styled.h1`
   color: blue;
@@ -29,7 +33,11 @@ const Counter: React.FC<CounterProps> = ({
       <H1>Hello!</H1>
       <Div />
       Here's some text: {someText}
-      <div>
+      <div
+        css={css`
+          color: red;
+        `}
+      >
         {firstNumber} + {secondNumber} = {sum}
       </div>
     </div>

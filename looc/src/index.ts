@@ -25,6 +25,7 @@ cli
   .option("--css-modules", "Use CSS modules")
   .option("--emotion", "Use emotion")
   .option("--styled-components", "Use styled-components")
+  .option("--clean", "Remove cache folder")
   .action(launch);
 
 export const run = () => cli.parse(process.argv);

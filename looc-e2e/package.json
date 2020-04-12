@@ -5,6 +5,8 @@
     "launch": "looc launch"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "looc": "workspace:looc",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

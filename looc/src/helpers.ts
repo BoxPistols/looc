@@ -27,7 +27,7 @@ export const snowpackInstall = async (
   pkgm: PkgManager
 ) => {
   const snowpackConfig = {
-    webDependencies: [...libs],
+    webDependencies: libs,
     installOptions: {
       dest: path.join(dest, "web_modules"),
       clean: false,
