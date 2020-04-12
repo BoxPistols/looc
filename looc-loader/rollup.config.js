@@ -9,17 +9,19 @@ export default {
   plugins: [
     typescript(),
     webImports({
-      react: "./web_modules/react.js",
-      "react-dom": "./web_modules/react-dom.js",
+      react: "./react.js",
+      "react-dom": "./react-dom.js",
     }),
-    copy({
-      targets: [
-        { src: "web_modules", dest: "build" },
-        { src: "html/*", dest: "build" },
-      ],
-    }),
-    serve("build"),
-    livereload({ watch: "build" }),
+    copy(
+      process.env.DEV && {
+        targets: [
+          { src: "web_modules/*", dest: "build" },
+          { src: "html/*", dest: "build" },
+        ],
+      }
+    ),
+    process.env.DEV && serve("build"),
+    process.env.DEV && livereload({ watch: "build" }),
   ],
   output: [
     {

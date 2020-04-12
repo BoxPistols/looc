@@ -2,12 +2,13 @@
   "name": "looc-loader",
   "module": "build/index.esm.js",
   "files": [
-    "build"
+    "build/index.esm.js"
   ],
   "scripts": {
     "install-modules": "yarn dlx snowpack --source pika --dest src/web_modules",
-    "build": "rimraf build && rollup -c",
-    "watch": "rimraf build && rollup -c -w"
+    "build:dev": "DEV=true rimraf build && rollup -c",
+    "build:prod": "DEV=false rimraf build && rollup -c",
+    "watch": "DEV=true rimraf build && rollup -c -w"
   },
   "devDependencies": {
     "@types/react": "^16.9.34",

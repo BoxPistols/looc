@@ -4,9 +4,15 @@ import copy from "rollup-plugin-copy";
 export default {
   input: "src/index.ts",
   external: [
+    "react",
+    "react-dom",
+    "react-is",
+    "prop-types",
+    "execa",
     "path",
     "http",
     "typescript",
+    "rollup-plugin-postcss",
     "rollup-plugin-typescript2",
     "rollup",
     "ts-morph",

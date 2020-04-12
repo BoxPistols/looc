@@ -29,10 +29,11 @@ const getPropTypesByComponent = (componentName) => (interfaces) => {
     return interfaces[propTypes];
 };
 
-const Loader = ({ debugMode }) => {
+const Loader = () => {
     const [imports, setImports] = useState(null);
     const [propTypes, setPropTypes] = useState(null);
     const [props, setProps] = useState({});
+    console.log("HELLO");
     const createInputs = (propTypes) => {
         const inputs = [];
         const getInputType = (type) => {
@@ -56,26 +57,28 @@ const Loader = ({ debugMode }) => {
         return inputs;
     };
     useEffect(() => {
-        const loadComponent = async () => {
-            const response = await fetch("data.json");
-            const data = await response.json();
-            return import(`/${data.filepath}`)
-                .then(({ default: component }) => {
-                console.log(`Successfully imported ${data.filepath}!`);
-                const propTypes = getPropTypesByComponent(component.name)(data.interfaces);
-                console.log("Prop types: ", propTypes);
-                setPropTypes(propTypes);
-                setImports({ component });
-            })
-                .catch((e) => console.log(`There was a problem importing ${data.filepath}!`, e));
-        };
-        loadComponent();
+        if (!__DEBUG__) {
+            const loadComponent = async () => {
+                const response = await fetch("data.json");
+                const data = await response.json();
+                return import(`/${data.filepath}`)
+                    .then(({ default: component }) => {
+                    console.log(`Successfully imported ${data.filepath}!`);
+                    const propTypes = getPropTypesByComponent(component.name)(data.interfaces);
+                    console.log("Prop types: ", propTypes);
+                    setPropTypes(propTypes);
+                    setImports({ component });
+                })
+                    .catch((e) => console.log(`There was a problem importing ${data.filepath}!`, e));
+            };
+            loadComponent();
+        }
     }, []);
+    if (__DEBUG__)
+        return React.createElement("div", null, "Debug");
     if (!imports)
         return null;
     const { component: Component } = imports;
-    if (debugMode)
-        return React.createElement("div", null, "Debug");
     return (React.createElement("div", null,
         React.createElement(Component, Object.assign({}, props)),
         React.createElement("div", { className: "prop-inputs" }, createInputs(propTypes))));

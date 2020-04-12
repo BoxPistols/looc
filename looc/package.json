@@ -12,7 +12,6 @@
     "install-modules": "yarn dlx snowpack --source pika"
   },
   "devDependencies": {
-    "@rollup/plugin-json": "^4.0.2",
     "@types/fs-extra": "^8.1.0",
     "@types/node": "^13.11.1",
     "@types/sade": "^1.6.0",
@@ -22,15 +21,17 @@
     "tslib": "^1.11.1"
   },
   "dependencies": {
-    "@rollup/plugin-commonjs": "^11.0.2",
-    "@rollup/plugin-node-resolve": "^7.1.1",
+    "execa": "^4.0.0",
     "fs-extra": "^9.0.0",
+    "has-yarn": "^2.1.0",
     "looc-loader": "workspace:looc-loader",
     "rollup": "^2.6.0",
+    "rollup-plugin-postcss": "^2.5.0",
     "rollup-plugin-typescript2": "^0.27.0",
     "rollup-plugin-web-imports": "^0.1.0",
     "sade": "^1.7.3",
     "serve-handler": "^6.1.2",
+    "snowpack": "^1.6.0",
     "ts-morph": "^7.0.2",
     "tsx-ray": "^0.1.2",
     "typescript": "^3.8.3"

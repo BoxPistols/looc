@@ -1,5 +1,5 @@
 module.exports = {
-  webDependencies: ["looc-loader", "react", "react-dom"],
+  webDependencies: ["looc-loader"],
   installOptions: {
     dest: "src/web_modules",
     clean: false,

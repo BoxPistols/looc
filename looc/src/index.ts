@@ -19,6 +19,12 @@ cli
     console.log(JSON.stringify(result, null, 2));
   });
 
-cli.command("launch <filepath>").action(launch);
+cli
+  .command("launch <filepath>")
+  .option("--css", "Use imported CSS")
+  .option("--css-modules", "Use CSS modules")
+  .option("--emotion", "Use emotion")
+  .option("--styled-components", "Use styled-components")
+  .action(launch);
 
 export const run = () => cli.parse(process.argv);
