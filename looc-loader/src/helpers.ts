@@ -1,10 +1,10 @@
 import type { extractInterfaces } from "tsx-ray";
 
 export enum ArrayType {
-  String = "string[]",
-  Number = "number[]",
-  Boolean = "boolean[]",
-  Nothing = "nothing",
+  String,
+  Number,
+  Boolean,
+  Nothing,
 }
 
 export enum PrimitiveType {
@@ -30,6 +30,24 @@ export const isBoolean = (t: ParsedType): t is PrimitiveType.Boolean => {
 
 export const isNumber = (t: ParsedType): t is PrimitiveType.Number => {
   return t === PrimitiveType.Number;
+};
+
+export const isStringArray = (
+  t: [PrimitiveType]
+): t is [PrimitiveType.String] => {
+  return t[0] === PrimitiveType.String;
+};
+
+export const isNumberArray = (
+  t: [PrimitiveType]
+): t is [PrimitiveType.Number] => {
+  return t[0] === PrimitiveType.Number;
+};
+
+export const isBoolArray = (
+  t: [PrimitiveType]
+): t is [PrimitiveType.Boolean] => {
+  return t[0] === PrimitiveType.Boolean;
 };
 
 export const isObject = (t: ParsedType): t is ObjectType => {

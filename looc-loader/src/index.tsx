@@ -5,9 +5,13 @@ import {
   isString,
   isBoolean,
   isNumber,
+  isStringArray,
+  isNumberArray,
+  isBoolArray,
   isObject,
+  PrimitiveType,
 } from "/helpers.js";
-import { InterfaceDefinition } from "tsx-ray/dist/types";
+import { InterfaceDefinition, InterfaceProperty } from "tsx-ray/dist/types";
 
 declare global {
   const __DEBUG__: boolean;
@@ -24,6 +28,11 @@ const setDefaultValues = (propTypes: PropTypes) => {
     if (isNumber(type)) defaultProps[prop] = 0;
     if (isBoolean(type)) defaultProps[prop] = false;
     if (isString(type)) defaultProps[prop] = "Text";
+    if (isNumberArray(type as [PrimitiveType])) defaultProps[prop] = [0, 1, 2];
+    if (isStringArray(type as [PrimitiveType]))
+      defaultProps[prop] = ["Text", "Text", "Text"];
+    if (isBoolArray(type as [PrimitiveType]))
+      defaultProps[prop] = [true, true, true];
     if (isObject(type))
       defaultProps[prop] = setDefaultValues(type as PropTypes);
   }
@@ -47,10 +56,14 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
     const inputs: JSX.Element[] = [];
 
     const getInputType = (type: Property) => {
-      if (isNumber(type)) return "number";
-      if (isBoolean(type)) return "checkbox";
-      if (isString(type)) return "text";
-      return "text";
+      if (isNumber(type)) return { type: "number", isArray: false };
+      if (isBoolean(type)) return { type: "checkbox", isArray: false };
+      if (isString(type)) return { type: "text", isArray: false };
+      if (isStringArray(type as [PrimitiveType]))
+        return { type: "text", isArray: true };
+      if (isNumberArray(type as [PrimitiveType]))
+        return { type: "text", isArray: true };
+      return { type: "text", isArray: false };
     };
 
     const createCheckboxInput = (handleChange: ChangeHandler) => (
@@ -61,16 +74,26 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
       ></input>
     );
 
-    const createNumberInput = (handleChange: ChangeHandler) => (
-      <input type="number" defaultValue="0" onChange={handleChange}></input>
+    const createNumberInput = (
+      handleChange: ChangeHandler,
+      isArray: boolean
+    ) => (
+      <input
+        type="number"
+        defaultValue={isArray ? "0, 1, 2" : "0"}
+        onChange={handleChange}
+      ></input>
     );
 
-    const createTextInput = (handleChange: ChangeHandler) => (
-      <input onChange={handleChange} defaultValue="Text" />
+    const createTextInput = (handleChange: ChangeHandler, isArray: boolean) => (
+      <input
+        onChange={handleChange}
+        defaultValue={isArray ? "Text, Text, Text" : "Text"}
+      />
     );
 
     for (const [prop, type] of Object.entries(propTypes)) {
-      const inputType = getInputType(type);
+      const { type: inputType, isArray } = getInputType(type);
       const input = (() => {
         switch (inputType) {
           case "checkbox": {
@@ -84,13 +107,13 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
             const handleChange: ChangeHandler = (e) =>
               setProps({ ...props, [prop]: e.target.value });
 
-            return createTextInput(handleChange);
+            return createTextInput(handleChange, isArray);
           }
           case "number": {
             const handleChange: ChangeHandler = (e) =>
               setProps({ ...props, [prop]: e.target.value });
 
-            return createNumberInput(handleChange);
+            return createNumberInput(handleChange, isArray);
           }
           default: {
             const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -159,6 +182,11 @@ const defaultDebugPropTypes = {
   isChecked3: "boolean",
   count3: "number",
   text3: "string",
+  arr: ["string"] as InterfaceProperty,
+  complex: {
+    a: "number",
+    b: "string",
+  },
 };
 
 const defaultDebugProps = setDefaultValues(

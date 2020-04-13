@@ -5,6 +5,13 @@
     "looc-loader",
     "looc-e2e"
   ],
+  "scripts": {
+    "build": "yarn loader:build && yarn looc:build",
+    "looc:build": "yarn workspace looc run install-modules && yarn workspace looc run build",
+    "loader:build": "yarn workspace looc-loader run build:prod",
+    "loader:watch": "yarn workspace looc-loader run watch",
+    "e2e:start": "yarn workspace looc-e2e run start src/index.tsx"
+  },
   "devDependencies": {
     "@yarnpkg/pnpify": "^2.0.0-rc.20",
     "typescript": "^3.8.3"
