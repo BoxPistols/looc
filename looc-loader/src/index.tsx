@@ -43,8 +43,6 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
   );
   const [props, setProps] = useState(debugProps || {});
 
-  console.log("HELLO");
-
   const createInputs = (propTypes: PropTypes) => {
     const inputs: JSX.Element[] = [];
 
@@ -77,8 +75,6 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
         switch (inputType) {
           case "checkbox": {
             const handleChange: ChangeHandler = (e) => {
-              console.log(e.target.checked);
-              console.log({ ...props, [prop]: e.target.checked });
               setProps({ ...props, [prop]: e.target.checked });
             };
 
@@ -127,8 +123,6 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
             const propTypes = getPropTypesByComponent(component.name)(
               data.interfaces
             );
-
-            console.log("Prop types: ", propTypes);
 
             setPropTypes(propTypes);
             setImports({ component });

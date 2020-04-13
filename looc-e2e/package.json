@@ -2,7 +2,7 @@
   "name": "looc-e2e",
   "scripts": {
     "say-hello": "looc hello",
-    "launch": "looc launch",
+    "start": "looc start",
     "parse": "looc parse"
   },
   "dependencies": {

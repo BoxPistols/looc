@@ -1,9 +1,7 @@
 /** @jsx jsx */
 
 import React from "react";
-import add from "./add";
 import Div from "./components/comp";
-// import styled from "styled-components";
 import { css, jsx } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -26,10 +24,8 @@ const Counter: React.FC<CounterProps> = ({
 }) => {
   const sum = Number(firstNumber) + Number(secondNumber);
 
-  console.log(add(1, 2));
-
   return (
-    <div style={{ backgroundColor: someBool ? "red" : "none" }}>
+    <div style={{ backgroundColor: someBool ? "red" : "green" }}>
       <H1>Hello!</H1>
       <Div />
       Here's some text: {someText}

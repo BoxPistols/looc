@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from './react.js';
 import ReactDOM from './react-dom.js';
-import { TextField, Input, Checkbox } from './@material-ui/core.js';
 
 var ArrayType;
 (function (ArrayType) {
@@ -51,7 +50,6 @@ const Loader = ({ debugProps, debugPropTypes, debugComponent, }) => {
     const [imports, setImports] = useState(debugComponent || null);
     const [propTypes, setPropTypes] = useState(debugPropTypes || null);
     const [props, setProps] = useState(debugProps || {});
-    console.log("HELLO");
     const createInputs = (propTypes) => {
         const inputs = [];
         const getInputType = (type) => {
@@ -63,17 +61,15 @@ const Loader = ({ debugProps, debugPropTypes, debugComponent, }) => {
                 return "text";
             return "text";
         };
-        const createCheckboxInput = (handleChange) => (React.createElement(Checkbox, { defaultChecked: false, onChange: handleChange }));
-        const createNumberInput = (handleChange) => (React.createElement(Input, { type: "number", defaultValue: "0", onChange: handleChange }));
-        const createTextInput = (handleChange) => (React.createElement(TextField, { onChange: handleChange, label: "Default text", variant: "filled" }));
+        const createCheckboxInput = (handleChange) => (React.createElement("input", { type: "checkbox", defaultChecked: false, onChange: handleChange }));
+        const createNumberInput = (handleChange) => (React.createElement("input", { type: "number", defaultValue: "0", onChange: handleChange }));
+        const createTextInput = (handleChange) => (React.createElement("input", { onChange: handleChange, defaultValue: "Text" }));
         for (const [prop, type] of Object.entries(propTypes)) {
             const inputType = getInputType(type);
             const input = (() => {
                 switch (inputType) {
                     case "checkbox": {
                         const handleChange = (e) => {
-                            console.log(e.target.checked);
-                            console.log(Object.assign(Object.assign({}, props), { [prop]: e.target.checked }));
                             setProps(Object.assign(Object.assign({}, props), { [prop]: e.target.checked }));
                         };
                         return createCheckboxInput(handleChange);
@@ -92,9 +88,8 @@ const Loader = ({ debugProps, debugPropTypes, debugComponent, }) => {
                     }
                 }
             })();
-            inputs.push(React.createElement("label", { className: "prop-input" },
-                prop,
-                ":",
+            inputs.push(React.createElement("div", { className: "looc-css-form" },
+                React.createElement("label", null, prop),
                 input));
         }
         return inputs;
@@ -108,7 +103,6 @@ const Loader = ({ debugProps, debugPropTypes, debugComponent, }) => {
                     .then(({ default: component }) => {
                     console.log(`Successfully imported ${data.filepath}!`);
                     const propTypes = getPropTypesByComponent(component.name)(data.interfaces);
-                    console.log("Prop types: ", propTypes);
                     setPropTypes(propTypes);
                     setImports({ component });
                     setProps(setDefaultValues(propTypes));
@@ -121,28 +115,52 @@ const Loader = ({ debugProps, debugPropTypes, debugComponent, }) => {
     if (!imports)
         return null;
     const { component: Component } = imports;
-    return (React.createElement("div", null,
+    return (React.createElement(React.Fragment, null,
         React.createElement(Component, Object.assign({}, props)),
-        React.createElement("div", { className: "prop-inputs" }, createInputs(propTypes))));
+        React.createElement("div", { className: "looc-css-container" }, createInputs(propTypes))));
 };
 const defaultDebugPropTypes = {
-    isChecked: "boolean",
-    count: "number",
-    text: "string",
+    isChecked1: "boolean",
+    count1: "number",
+    text1: "string",
+    isChecked2: "boolean",
+    count2: "number",
+    text2: "string",
+    isChecked3: "boolean",
+    count3: "number",
+    text3: "string",
 };
 const defaultDebugProps = setDefaultValues(defaultDebugPropTypes);
 const DebugComponent = (props) => {
-    console.log(props);
+    console.log("Debug props:", props);
     return (React.createElement("div", null,
         React.createElement("div", null,
-            "isChecked: ",
-            props.isChecked ? "CHECKED" : "UNCHECKED"),
+            "isChecked1: ",
+            props.isChecked1 ? "CHECKED" : "UNCHECKED"),
         React.createElement("div", null,
-            "number: ",
-            props.count),
+            "number1: ",
+            props.count1),
         React.createElement("div", null,
-            "text: ",
-            props.text)));
+            "text1: ",
+            props.text1),
+        React.createElement("div", null,
+            "isChecked2: ",
+            props.isChecked2 ? "CHECKED" : "UNCHECKED"),
+        React.createElement("div", null,
+            "number2: ",
+            props.count2),
+        React.createElement("div", null,
+            "text2: ",
+            props.text2),
+        React.createElement("div", null,
+            "isChecked3: ",
+            props.isChecked3 ? "CHECKED" : "UNCHECKED"),
+        React.createElement("div", null,
+            "number3: ",
+            props.count3),
+        React.createElement("div", null,
+            "text3: ",
+            props.text3)));
 };
 const debugLoaderProps = {
     debugComponent: {

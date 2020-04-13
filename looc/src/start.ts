@@ -11,7 +11,7 @@ import webImports from "rollup-plugin-web-imports";
 import postcss from "rollup-plugin-postcss";
 import { snowpackInstall, readCachedData } from "./helpers";
 
-const REQUIRED_LIBS = ["react", "react-dom", "@material-ui/core"];
+const REQUIRED_LIBS = ["react", "react-dom"];
 
 export const start = async (
   filepath: string,
