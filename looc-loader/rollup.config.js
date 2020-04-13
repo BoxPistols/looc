@@ -18,7 +18,7 @@ export default {
     BUILD === "development" &&
       copy({
         targets: [
-          { src: "src/web_modules", dest: "build" },
+          { src: "src/web_modules/*", dest: "build" },
           { src: "html/*", dest: "build" },
         ],
       }),
