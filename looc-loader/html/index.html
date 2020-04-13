@@ -2,13 +2,41 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <style>
+      body,
+      html {
+        padding: 0;
+        margin: 0;
+      }
+      .looc-css-container {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        max-height: 30vh;
+        overflow-y: scroll;
+        width: 100vw;
+        bottom: 0;
+        padding: 10px;
+        background-color: whitesmoke;
+      }
+      .looc-css-form {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+      }
+      .looc-css-form label {
+        font-weight: bold;
+        font-family: monospace;
+        margin-right: 10px;
+      }
+      .looc-css-form input {
+        padding: 10px;
+      }
+    </style>
     <script>
       const __DEBUG__ = true;
     </script>
     <script type="module" src="index.esm.js"></script>
-    <script type="module">
-      import * as pkg from "https://cdn.pika.dev/@material-ui/core@^4.9.1";
-    </script>
   </head>
   <div id="root"></div>
 </html>

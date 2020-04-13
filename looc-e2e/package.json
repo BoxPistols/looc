@@ -2,7 +2,8 @@
   "name": "looc-e2e",
   "scripts": {
     "say-hello": "looc hello",
-    "launch": "looc launch"
+    "launch": "looc launch",
+    "parse": "looc parse"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
