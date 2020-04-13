@@ -13,7 +13,7 @@ import { snowpackInstall, readCachedData } from "./helpers";
 
 const REQUIRED_LIBS = ["react", "react-dom", "@material-ui/core"];
 
-export const launch = async (
+export const start = async (
   filepath: string,
   options: Record<string, boolean>
 ) => {

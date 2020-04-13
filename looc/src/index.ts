@@ -1,8 +1,8 @@
 import sade from "sade";
 import { extractInterfacesFromFile } from "tsx-ray";
-import { launch } from "./launch";
+import { start } from "./start";
 
-const cli = sade("storyline");
+const cli = sade("looc");
 
 cli.version("0.1.0");
 
@@ -20,12 +20,12 @@ cli
   });
 
 cli
-  .command("launch <filepath>")
+  .command("start <filepath>")
   .option("--css", "Use imported CSS")
   .option("--css-modules", "Use CSS modules")
   .option("--emotion", "Use emotion")
   .option("--styled-components", "Use styled-components")
   .option("--clean", "Remove cache folder")
-  .action(launch);
+  .action(start);
 
 export const run = () => cli.parse(process.argv);
