@@ -1337,7 +1337,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-replace@npm:^2.1.0":
+"@rollup/plugin-replace@npm:^2.1.0, @rollup/plugin-replace@npm:^2.3.1":
   version: 2.3.1
   resolution: "@rollup/plugin-replace@npm:2.3.1"
   dependencies:
@@ -4853,6 +4853,7 @@ fsevents@~2.1.2:
   resolution: "looc-loader@workspace:looc-loader"
   dependencies:
     "@material-ui/core": ^4.9.10
+    "@rollup/plugin-replace": ^2.3.1
     "@types/react": ^16.9.34
     "@types/react-dom": ^16.9.6
     react: ^16.13.1

@@ -143,7 +143,7 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
 
   return (
     <>
-      <Component {...props} />
+      <Component __LOOC_DEBUG__ {...props} />
       <div className="looc-css-container">{createInputs(propTypes!)}</div>
     </>
   );
