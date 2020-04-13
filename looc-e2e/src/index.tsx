@@ -16,12 +16,14 @@ interface CounterProps {
   someBool: boolean;
 }
 
-const Counter: React.FC<CounterProps> = ({
+const Counter: React.FC<CounterProps & { __LOOC_DEBUG__: boolean }> = ({
   firstNumber = 0,
   secondNumber = 0,
   someText = "",
   someBool = false,
+  __LOOC_DEBUG__,
 }) => {
+  console.log(__LOOC_DEBUG__);
   const sum = Number(firstNumber) + Number(secondNumber);
 
   return (

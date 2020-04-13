@@ -95,7 +95,7 @@ const Loader = ({ debugProps, debugPropTypes, debugComponent, }) => {
         return inputs;
     };
     useEffect(() => {
-        if (!__DEBUG__) {
+        {
             const loadComponent = async () => {
                 const response = await fetch("data.json");
                 const data = await response.json();
@@ -116,7 +116,7 @@ const Loader = ({ debugProps, debugPropTypes, debugComponent, }) => {
         return null;
     const { component: Component } = imports;
     return (React.createElement(React.Fragment, null,
-        React.createElement(Component, Object.assign({}, props)),
+        React.createElement(Component, Object.assign({ __LOOC_DEBUG__: true }, props)),
         React.createElement("div", { className: "looc-css-container" }, createInputs(propTypes))));
 };
 const defaultDebugPropTypes = {
