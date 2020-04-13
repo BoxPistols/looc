@@ -12,7 +12,7 @@ export type StyleLibrary =
   | "react-dom"
   | "";
 
-export type PkgManager = "yarn" | "npm";
+export type PkgManager = "yarn" | "npx";
 
 export const getPropTypesByComponent = (componentName: string) => (
   interfaces: Interfaces
@@ -21,11 +21,7 @@ export const getPropTypesByComponent = (componentName: string) => (
   return interfaces[propTypes];
 };
 
-export const snowpackInstall = async (
-  libs: StyleLibrary[],
-  dest: string,
-  pkgm: PkgManager
-) => {
+export const snowpackInstall = async (libs: StyleLibrary[], dest: string) => {
   if (libs.length === 0) {
     return;
   }
@@ -40,8 +36,29 @@ export const snowpackInstall = async (
       sourceMap: true,
     },
   };
-  const cmd = pkgm === "yarn" ? "yarn dlx" : "npx";
+
   const configPath = path.join(dest, "snowpack.config.json");
+
   await fs.outputJSON(configPath, snowpackConfig);
-  await execa(`${cmd} snowpack --config ${configPath} --source pika`);
+
+  try {
+    await execa("npx", [
+      `snowpack`,
+      `--config`,
+      `${configPath}`,
+      `--source`,
+      `pika`,
+    ]);
+  } catch (e) {
+    console.error("LOOC ERROR:", e);
+  }
+};
+
+export const readCachedData = async (cacheDir: string) => {
+  let data = null;
+  try {
+    data = await fs.readJSON(path.join(cacheDir, "data.json"));
+  } finally {
+    return data;
+  }
 };

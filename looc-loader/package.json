@@ -6,9 +6,9 @@
   ],
   "scripts": {
     "install-modules": "yarn dlx snowpack --source pika --dest src/web_modules",
-    "build:dev": "DEV=true rimraf build && rollup -c",
-    "build:prod": "DEV=false rimraf build && rollup -c",
-    "watch": "DEV=true rimraf build && rollup -c -w"
+    "build:dev": "rimraf build && rollup -c --environment BUILD:development",
+    "build:prod": "rimraf build && rollup -c --environment BUILD:production",
+    "watch": "rimraf build && rollup -c -w --environment BUILD:development"
   },
   "devDependencies": {
     "@material-ui/core": "^4.9.10",

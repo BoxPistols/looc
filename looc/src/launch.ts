@@ -9,9 +9,9 @@ import rollup from "rollup";
 import typescript from "rollup-plugin-typescript2";
 import webImports from "rollup-plugin-web-imports";
 import postcss from "rollup-plugin-postcss";
-import hasYarn from "has-yarn";
-// import banner from "rollup-plugin-banner";
-import { snowpackInstall } from "./helpers";
+import { snowpackInstall, readCachedData } from "./helpers";
+
+const REQUIRED_LIBS = ["react", "react-dom", "@material-ui/core"];
 
 export const launch = async (
   filepath: string,
@@ -21,12 +21,9 @@ export const launch = async (
 
   const htmlDir = path.join(`${__dirname}`, `html`);
   const modulesDir = path.join(`${__dirname}`, `web_modules`);
-
   const cacheDir = path.join(cwd, `.cache`);
 
   const isEmotion = options["emotion"];
-
-  console.log(isEmotion);
 
   const project = new Project({
     compilerOptions: {
@@ -34,7 +31,6 @@ export const launch = async (
       module: ts.ModuleKind.ESNext,
       declaration: false,
       jsx: isEmotion ? ts.JsxEmit.None : ts.JsxEmit.React,
-      // jsxFactory: isEmotion ? "jsx" : undefined,
     },
   });
 
@@ -61,41 +57,38 @@ export const launch = async (
     return "";
   });
 
-  const allLibs = [...styleLibs.flat().filter(Boolean), "react", "react-dom"];
+  if (options.clean) {
+    await fs.remove(cacheDir);
+  }
 
-  let cachedData: any;
+  const allLibs = [...styleLibs.flat().filter(Boolean), ...REQUIRED_LIBS];
 
-  try {
-    cachedData = await fs.readJSON(path.join(cacheDir, "data.json"));
-  } catch {}
+  const cachedData = await readCachedData(cacheDir);
+  const installedLibs = cachedData ? cachedData.installedLibs : [];
+
+  console.log("Skipping previously installed libraries: ", installedLibs);
+
+  await fs.ensureDir(cacheDir);
+
+  const uninstalledLibs = cachedData
+    ? allLibs.filter((lib) => !installedLibs.includes(lib))
+    : allLibs;
+
+  if (uninstalledLibs.length > 0) {
+    console.log("Installing libraries: ", uninstalledLibs);
+  }
+
+  await snowpackInstall(uninstalledLibs, cacheDir);
 
   const data = {
     interfaces: parsedInterfaces,
     filepath: sourceFilename,
-    installedLibs: cachedData ? cachedData.installedLibs : allLibs,
+    installedLibs: allLibs,
   };
-
-  if (!fs.existsSync(cacheDir)) {
-    await fs.mkdir(cacheDir);
-  } else {
-    if (options.clean) {
-      await fs.remove(cacheDir);
-      await fs.mkdir(cacheDir);
-    }
-  }
 
   await fs.writeFile(path.join(cacheDir, "data.json"), JSON.stringify(data));
 
-  const yarn = hasYarn(cwd);
-  const cmd = yarn ? "yarn" : "npm";
-
-  const uninstalledLibs = cachedData
-    ? allLibs.filter((lib) => !cachedData.installedLibs.includes(lib))
-    : allLibs;
-
-  await snowpackInstall(uninstalledLibs, cacheDir, cmd);
-
-  console.log("installed", uninstalledLibs);
+  console.log("Install finished!");
 
   const otherWebImports = Object.keys(options).reduce(
     (imports: object, opt: string) => {
@@ -103,14 +96,14 @@ export const launch = async (
         if (opt === "emotion") {
           return {
             ...imports,
-            "@emotion/core": "/web_modules/@emotion/core.js",
-            "@emotion/styled": "/web_modules/@emotion/styled.js",
+            "@emotion/core": "./web_modules/@emotion/core.js",
+            "@emotion/styled": "./web_modules/@emotion/styled.js",
           };
         }
         if (opt === "styled-components") {
           return {
             ...imports,
-            "styled-components": "/web_modules/styled-components.js",
+            "styled-components": "./web_modules/styled-components.js",
           };
         }
       }
@@ -137,7 +130,6 @@ export const launch = async (
 
   const outputOpts = {
     dir: cacheDir,
-    //plugins: [banner()],
   };
 
   //project.emitSync();

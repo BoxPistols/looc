@@ -4,6 +4,8 @@ import serve from "rollup-plugin-serve";
 import livereload from "rollup-plugin-livereload";
 import copy from "rollup-plugin-copy";
 
+const { BUILD } = process.env;
+
 export default {
   input: "src/index.tsx",
   plugins: [
@@ -13,15 +15,15 @@ export default {
       "react-dom": "./react-dom.js",
       "@material-ui/core": "./@material-ui/core.js",
     }),
-    /* process.env.DEV && */
-    copy({
-      targets: [
-        { src: "src/web_modules/*", dest: "build" },
-        { src: "html/*", dest: "build" },
-      ],
-    }),
-    /* process.env.DEV &&  */ serve("build"),
-    /* process.env.DEV &&  */ livereload({ watch: "build" }),
+    BUILD === "development" &&
+      copy({
+        targets: [
+          { src: "src/web_modules", dest: "build" },
+          { src: "html/*", dest: "build" },
+        ],
+      }),
+    BUILD === "development" && serve("build"),
+    BUILD === "development" && livereload({ watch: "build" }),
   ],
   output: [
     {
