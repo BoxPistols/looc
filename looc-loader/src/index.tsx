@@ -8,33 +8,28 @@ import {
   isStringArray,
   isNumberArray,
   isBoolArray,
-  isObject,
+  isInterface,
+  PropsInterface,
+  PropType,
   PrimitiveType,
 } from "/helpers.js";
-import { InterfaceDefinition, InterfaceProperty } from "tsx-ray/dist/types";
 
 declare global {
   const __DEBUG__: boolean;
 }
 
-type PropTypes = ReturnType<ReturnType<typeof getPropTypesByComponent>>;
-type Property = PropTypes[keyof PropTypes];
-
 type ChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => void;
 
-const setDefaultValues = (propTypes: PropTypes) => {
-  const defaultProps: Record<string, number | string | boolean | object> = {};
+const setDefaultValues = (propTypes: PropsInterface) => {
+  const defaultProps: any = {};
   for (const [prop, type] of Object.entries(propTypes)) {
     if (isNumber(type)) defaultProps[prop] = 0;
     if (isBoolean(type)) defaultProps[prop] = false;
     if (isString(type)) defaultProps[prop] = "Text";
-    if (isNumberArray(type as [PrimitiveType])) defaultProps[prop] = [0, 1, 2];
-    if (isStringArray(type as [PrimitiveType]))
-      defaultProps[prop] = ["Text", "Text", "Text"];
-    if (isBoolArray(type as [PrimitiveType]))
-      defaultProps[prop] = [true, true, true];
-    if (isObject(type))
-      defaultProps[prop] = setDefaultValues(type as PropTypes);
+    if (isNumberArray(type)) defaultProps[prop] = [0, 1, 2];
+    if (isStringArray(type)) defaultProps[prop] = ["Text", "Text", "Text"];
+    if (isBoolArray(type)) defaultProps[prop] = [true, true, true];
+    if (isInterface(type)) defaultProps[prop] = setDefaultValues(type);
   }
   return defaultProps;
 };
@@ -47,23 +42,21 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
   const [imports, setImports] = useState<{ component: React.FC } | null>(
     debugComponent || null
   );
-  const [propTypes, setPropTypes] = useState<PropTypes | null>(
+  const [propTypes, setPropTypes] = useState<PropsInterface | null>(
     debugPropTypes || null
   );
   const [props, setProps] = useState(debugProps || {});
 
-  const createInputs = (propTypes: PropTypes) => {
+  const createInputs = (propTypes: PropsInterface) => {
     const inputs: JSX.Element[] = [];
 
-    const getInputType = (type: Property) => {
+    const getInputType = (type: PropType) => {
       if (isNumber(type)) return { type: "number", isArray: false };
       if (isBoolean(type)) return { type: "checkbox", isArray: false };
       if (isString(type)) return { type: "text", isArray: false };
-      if (isStringArray(type as [PrimitiveType]))
-        return { type: "text", isArray: true };
-      if (isNumberArray(type as [PrimitiveType]))
-        return { type: "text", isArray: true };
-      return { type: "text", isArray: false };
+      if (isStringArray(type)) return { type: "text", isArray: true };
+      if (isNumberArray(type)) return { type: "number", isArray: true };
+      return { type: "unknown", isArray: false };
     };
 
     const createCheckboxInput = (handleChange: ChangeHandler) => (
@@ -74,25 +67,31 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
       ></input>
     );
 
-    const createNumberInput = (
-      handleChange: ChangeHandler,
-      isArray: boolean
-    ) => (
-      <input
-        type="number"
-        defaultValue={isArray ? "0, 1, 2" : "0"}
-        onChange={handleChange}
-      ></input>
+    const createNumberInput = (handleChange: ChangeHandler) => (
+      <input type="number" defaultValue={"0"} onChange={handleChange}></input>
+    );
+
+    const createNumericTextInput = (handleChange: ChangeHandler) => (
+      <input type="text" onChange={handleChange} defaultValue={"1, 2, 3"} />
     );
 
     const createTextInput = (handleChange: ChangeHandler, isArray: boolean) => (
       <input
+        type="text"
         onChange={handleChange}
         defaultValue={isArray ? "Text, Text, Text" : "Text"}
       />
     );
 
+    const createGenericTextInput = (
+      handleChange: ChangeHandler,
+      defaultValue: any
+    ) => (
+      <input type="text" onChange={handleChange} defaultValue={defaultValue} />
+    );
+
     for (const [prop, type] of Object.entries(propTypes)) {
+      console.log("type", type);
       const { type: inputType, isArray } = getInputType(type);
       const input = (() => {
         switch (inputType) {
@@ -103,23 +102,41 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
 
             return createCheckboxInput(handleChange);
           }
+
           case "text": {
-            const handleChange: ChangeHandler = (e) =>
-              setProps({ ...props, [prop]: e.target.value });
+            const handleChange: ChangeHandler = (e) => {
+              const value = isArray
+                ? e.target.value.split(",")
+                : e.target.value;
+              setProps({ ...props, [prop]: value });
+            };
 
             return createTextInput(handleChange, isArray);
           }
+
           case "number": {
-            const handleChange: ChangeHandler = (e) =>
-              setProps({ ...props, [prop]: e.target.value });
+            const handleChange: ChangeHandler = (e) => {
+              const value = isArray
+                ? e.target.value.split(",").map(Number)
+                : Number(e.target.value);
+              setProps({ ...props, [prop]: value });
+            };
 
-            return createNumberInput(handleChange, isArray);
+            if (isArray) return createNumericTextInput(handleChange);
+
+            return createNumberInput(handleChange);
           }
-          default: {
-            const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-              setProps({ ...props, [prop]: e.target.value });
 
-            return createTextInput(handleChange, isArray);
+          default: {
+            const handleChange: ChangeHandler = (e) =>
+              setProps({
+                ...props,
+                [prop]: JSON.parse(e.target.value),
+              });
+
+            console.log(type);
+
+            return createGenericTextInput(handleChange, JSON.stringify(type));
           }
         }
       })();
@@ -182,7 +199,7 @@ const defaultDebugPropTypes = {
   isChecked3: "boolean",
   count3: "number",
   text3: "string",
-  arr: ["string"] as InterfaceProperty,
+  arr: ["number"] as [PrimitiveType],
   complex: {
     a: "number",
     b: "string",
@@ -190,7 +207,7 @@ const defaultDebugPropTypes = {
 };
 
 const defaultDebugProps = setDefaultValues(
-  defaultDebugPropTypes as InterfaceDefinition
+  defaultDebugPropTypes as PropsInterface
 );
 
 const DebugComponent = (props: typeof defaultDebugProps) => {
@@ -206,6 +223,9 @@ const DebugComponent = (props: typeof defaultDebugProps) => {
       <div>isChecked3: {props.isChecked3 ? "CHECKED" : "UNCHECKED"}</div>
       <div>number3: {props.count3}</div>
       <div>text3: {props.text3}</div>
+      <div>arr sum: {props.arr.reduce((a: number, b: number) => a + b)}</div>
+      <div>complex a: {props.complex.a}</div>
+      <div>complex b: {props.complex.b}</div>
     </div>
   );
 };

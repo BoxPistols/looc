@@ -1,5 +1,3 @@
-import type { extractInterfaces } from "tsx-ray";
-
 export enum ArrayType {
   String,
   Number,
@@ -14,43 +12,41 @@ export enum PrimitiveType {
   Nothing = "nothing",
 }
 
-export type ObjectType = Record<string, any>;
+export interface Interfaces {
+  [name: string]: PropsInterface;
+}
 
-export type ParsedType = PrimitiveType | ArrayType | ObjectType;
+export interface PropsInterface {
+  [prop: string]: PrimitiveType | [PrimitiveType] | PropsInterface;
+}
 
-type Interfaces = ReturnType<typeof extractInterfaces>;
+export type PropType = PropsInterface[keyof PropsInterface];
 
-export const isString = (t: ParsedType): t is PrimitiveType.String => {
+export const isString = (t: PropType): t is PrimitiveType.String => {
   return t === PrimitiveType.String;
 };
 
-export const isBoolean = (t: ParsedType): t is PrimitiveType.Boolean => {
+export const isBoolean = (t: PropType): t is PrimitiveType.Boolean => {
   return t === PrimitiveType.Boolean;
 };
 
-export const isNumber = (t: ParsedType): t is PrimitiveType.Number => {
+export const isNumber = (t: PropType): t is PrimitiveType.Number => {
   return t === PrimitiveType.Number;
 };
 
-export const isStringArray = (
-  t: [PrimitiveType]
-): t is [PrimitiveType.String] => {
-  return t[0] === PrimitiveType.String;
+export const isStringArray = (t: PropType): t is [PrimitiveType.String] => {
+  return Array.isArray(t) && t[0] === PrimitiveType.String;
 };
 
-export const isNumberArray = (
-  t: [PrimitiveType]
-): t is [PrimitiveType.Number] => {
-  return t[0] === PrimitiveType.Number;
+export const isNumberArray = (t: PropType): t is [PrimitiveType.Number] => {
+  return Array.isArray(t) && t[0] === PrimitiveType.Number;
 };
 
-export const isBoolArray = (
-  t: [PrimitiveType]
-): t is [PrimitiveType.Boolean] => {
-  return t[0] === PrimitiveType.Boolean;
+export const isBoolArray = (t: PropType): t is [PrimitiveType.Boolean] => {
+  return Array.isArray(t) && t[0] === PrimitiveType.Boolean;
 };
 
-export const isObject = (t: ParsedType): t is ObjectType => {
+export const isInterface = (t: PropType): t is PropsInterface => {
   return typeof t === "object" && t !== null && !Array.isArray(t);
 };
 
