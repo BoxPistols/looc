@@ -3,10 +3,10 @@ import ReactDOM from './react-dom.js';
 
 var ArrayType;
 (function (ArrayType) {
-    ArrayType["String"] = "string[]";
-    ArrayType["Number"] = "number[]";
-    ArrayType["Boolean"] = "boolean[]";
-    ArrayType["Nothing"] = "nothing";
+    ArrayType[ArrayType["String"] = 0] = "String";
+    ArrayType[ArrayType["Number"] = 1] = "Number";
+    ArrayType[ArrayType["Boolean"] = 2] = "Boolean";
+    ArrayType[ArrayType["Nothing"] = 3] = "Nothing";
 })(ArrayType || (ArrayType = {}));
 var PrimitiveType;
 (function (PrimitiveType) {
@@ -23,6 +23,15 @@ const isBoolean = (t) => {
 };
 const isNumber = (t) => {
     return t === PrimitiveType.Number;
+};
+const isStringArray = (t) => {
+    return t[0] === PrimitiveType.String;
+};
+const isNumberArray = (t) => {
+    return t[0] === PrimitiveType.Number;
+};
+const isBoolArray = (t) => {
+    return t[0] === PrimitiveType.Boolean;
 };
 const isObject = (t) => {
     return typeof t === "object" && t !== null && !Array.isArray(t);
@@ -41,6 +50,12 @@ const setDefaultValues = (propTypes) => {
             defaultProps[prop] = false;
         if (isString(type))
             defaultProps[prop] = "Text";
+        if (isNumberArray(type))
+            defaultProps[prop] = [0, 1, 2];
+        if (isStringArray(type))
+            defaultProps[prop] = ["Text", "Text", "Text"];
+        if (isBoolArray(type))
+            defaultProps[prop] = [true, true, true];
         if (isObject(type))
             defaultProps[prop] = setDefaultValues(type);
     }
@@ -54,18 +69,22 @@ const Loader = ({ debugProps, debugPropTypes, debugComponent, }) => {
         const inputs = [];
         const getInputType = (type) => {
             if (isNumber(type))
-                return "number";
+                return { type: "number", isArray: false };
             if (isBoolean(type))
-                return "checkbox";
+                return { type: "checkbox", isArray: false };
             if (isString(type))
-                return "text";
-            return "text";
+                return { type: "text", isArray: false };
+            if (isStringArray(type))
+                return { type: "text", isArray: true };
+            if (isNumberArray(type))
+                return { type: "text", isArray: true };
+            return { type: "text", isArray: false };
         };
         const createCheckboxInput = (handleChange) => (React.createElement("input", { type: "checkbox", defaultChecked: false, onChange: handleChange }));
-        const createNumberInput = (handleChange) => (React.createElement("input", { type: "number", defaultValue: "0", onChange: handleChange }));
-        const createTextInput = (handleChange) => (React.createElement("input", { onChange: handleChange, defaultValue: "Text" }));
+        const createNumberInput = (handleChange, isArray) => (React.createElement("input", { type: "number", defaultValue: isArray ? "0, 1, 2" : "0", onChange: handleChange }));
+        const createTextInput = (handleChange, isArray) => (React.createElement("input", { onChange: handleChange, defaultValue: isArray ? "Text, Text, Text" : "Text" }));
         for (const [prop, type] of Object.entries(propTypes)) {
-            const inputType = getInputType(type);
+            const { type: inputType, isArray } = getInputType(type);
             const input = (() => {
                 switch (inputType) {
                     case "checkbox": {
@@ -76,15 +95,15 @@ const Loader = ({ debugProps, debugPropTypes, debugComponent, }) => {
                     }
                     case "text": {
                         const handleChange = (e) => setProps(Object.assign(Object.assign({}, props), { [prop]: e.target.value }));
-                        return createTextInput(handleChange);
+                        return createTextInput(handleChange, isArray);
                     }
                     case "number": {
                         const handleChange = (e) => setProps(Object.assign(Object.assign({}, props), { [prop]: e.target.value }));
-                        return createNumberInput(handleChange);
+                        return createNumberInput(handleChange, isArray);
                     }
                     default: {
                         const handleChange = (e) => setProps(Object.assign(Object.assign({}, props), { [prop]: e.target.value }));
-                        return createTextInput(handleChange);
+                        return createTextInput(handleChange, isArray);
                     }
                 }
             })();
@@ -129,6 +148,11 @@ const defaultDebugPropTypes = {
     isChecked3: "boolean",
     count3: "number",
     text3: "string",
+    arr: ["string"],
+    complex: {
+        a: "number",
+        b: "string",
+    },
 };
 const defaultDebugProps = setDefaultValues(defaultDebugPropTypes);
 const DebugComponent = (props) => {

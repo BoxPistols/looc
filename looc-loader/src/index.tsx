@@ -119,7 +119,7 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
             const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
               setProps({ ...props, [prop]: e.target.value });
 
-            return createTextInput(handleChange);
+            return createTextInput(handleChange, isArray);
           }
         }
       })();
