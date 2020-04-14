@@ -17,7 +17,11 @@ export interface Interfaces {
 }
 
 export interface PropsInterface {
-  [prop: string]: PrimitiveType | [PrimitiveType] | PropsInterface;
+  [prop: string]:
+    | PrimitiveType
+    | [PrimitiveType]
+    | [PrimitiveType, PrimitiveType]
+    | PropsInterface;
 }
 
 export type PropType = PropsInterface[keyof PropsInterface];
@@ -35,15 +39,27 @@ export const isNumber = (t: PropType): t is PrimitiveType.Number => {
 };
 
 export const isStringArray = (t: PropType): t is [PrimitiveType.String] => {
-  return Array.isArray(t) && t[0] === PrimitiveType.String;
+  return Array.isArray(t) && t.length === 1 && t[0] === PrimitiveType.String;
 };
 
 export const isNumberArray = (t: PropType): t is [PrimitiveType.Number] => {
-  return Array.isArray(t) && t[0] === PrimitiveType.Number;
+  return Array.isArray(t) && t.length === 1 && t[0] === PrimitiveType.Number;
 };
 
 export const isBoolArray = (t: PropType): t is [PrimitiveType.Boolean] => {
-  return Array.isArray(t) && t[0] === PrimitiveType.Boolean;
+  return Array.isArray(t) && t.length === 1 && t[0] === PrimitiveType.Boolean;
+};
+
+export const isStringUnion = (
+  t: PropType
+): t is [PrimitiveType.String, PrimitiveType.String] => {
+  return Array.isArray(t) && t.length === 2 && t[0] === PrimitiveType.String;
+};
+
+export const isNumberUnion = (
+  t: PropType
+): t is [PrimitiveType.Number, PrimitiveType.Number] => {
+  return Array.isArray(t) && t.length === 2 && t[0] === PrimitiveType.Number;
 };
 
 export const isInterface = (t: PropType): t is PropsInterface => {

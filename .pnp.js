@@ -1405,10 +1405,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:0.1.4"
       ],
       [
-        "has-yarn",
-        "npm:2.1.0"
-      ],
-      [
         "hasha",
         "npm:5.2.0"
       ],
@@ -1785,24 +1781,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:4.17.15"
       ],
       [
-        "lodash._reinterpolate",
-        "npm:3.0.0"
-      ],
-      [
         "lodash.camelcase",
         "npm:4.3.0"
       ],
       [
         "lodash.memoize",
         "npm:4.1.2"
-      ],
-      [
-        "lodash.template",
-        "npm:4.5.0"
-      ],
-      [
-        "lodash.templatesettings",
-        "npm:4.2.0"
       ],
       [
         "lodash.uniq",
@@ -2495,10 +2479,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "rollup",
         "npm:2.4.0"
-      ],
-      [
-        "rollup-plugin-banner",
-        "npm:0.2.1"
       ],
       [
         "rollup-plugin-copy",
@@ -7354,15 +7334,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["has-yarn", [
-        ["npm:2.1.0", {
-          "packageLocation": "./.yarn/cache/has-yarn-npm-2.1.0-b73f6750d9-2.zip/node_modules/has-yarn/",
-          "packageDependencies": [
-            ["has-yarn", "npm:2.1.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["hasha", [
         ["npm:5.2.0", {
           "packageLocation": "./.yarn/cache/hasha-npm-5.2.0-914544dc94-2.zip/node_modules/hasha/",
@@ -8433,15 +8404,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["lodash._reinterpolate", [
-        ["npm:3.0.0", {
-          "packageLocation": "./.yarn/cache/lodash._reinterpolate-npm-3.0.0-3c62ca439e-2.zip/node_modules/lodash._reinterpolate/",
-          "packageDependencies": [
-            ["lodash._reinterpolate", "npm:3.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["lodash.camelcase", [
         ["npm:4.3.0", {
           "packageLocation": "./.yarn/cache/lodash.camelcase-npm-4.3.0-bf268e3bf0-2.zip/node_modules/lodash.camelcase/",
@@ -8456,27 +8418,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/lodash.memoize-npm-4.1.2-0e6250041f-2.zip/node_modules/lodash.memoize/",
           "packageDependencies": [
             ["lodash.memoize", "npm:4.1.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["lodash.template", [
-        ["npm:4.5.0", {
-          "packageLocation": "./.yarn/cache/lodash.template-npm-4.5.0-5272df3039-2.zip/node_modules/lodash.template/",
-          "packageDependencies": [
-            ["lodash.template", "npm:4.5.0"],
-            ["lodash._reinterpolate", "npm:3.0.0"],
-            ["lodash.templatesettings", "npm:4.2.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["lodash.templatesettings", [
-        ["npm:4.2.0", {
-          "packageLocation": "./.yarn/cache/lodash.templatesettings-npm-4.2.0-15fbdebcf4-2.zip/node_modules/lodash.templatesettings/",
-          "packageDependencies": [
-            ["lodash.templatesettings", "npm:4.2.0"],
-            ["lodash._reinterpolate", "npm:3.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -8511,11 +8452,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/serve-handler", "npm:6.1.0"],
             ["execa", "npm:4.0.0"],
             ["fs-extra", "npm:9.0.0"],
-            ["has-yarn", "npm:2.1.0"],
             ["looc-loader", "workspace:looc-loader"],
             ["rimraf", "npm:3.0.2"],
             ["rollup", "npm:2.6.0"],
-            ["rollup-plugin-banner", "npm:0.2.1"],
             ["rollup-plugin-copy", "npm:3.3.0"],
             ["rollup-plugin-postcss", "npm:2.5.0"],
             ["rollup-plugin-typescript2", "virtual:bfcfffe88fd61df077caa41114586842a32d01f5e8c979a932271b543853085a7068b5d3c41db4509842df4cd9d624b24ab60111603766d4c0299ad80db6a0c8#npm:0.27.0"],
@@ -10646,16 +10585,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [
             "@babel/core",
             "rollup"
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["rollup-plugin-banner", [
-        ["npm:0.2.1", {
-          "packageLocation": "./.yarn/cache/rollup-plugin-banner-npm-0.2.1-552843e52a-2.zip/node_modules/rollup-plugin-banner/",
-          "packageDependencies": [
-            ["rollup-plugin-banner", "npm:0.2.1"],
-            ["lodash.template", "npm:4.5.0"]
           ],
           "linkType": "HARD",
         }]

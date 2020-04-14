@@ -8,36 +8,51 @@ import {
   isStringArray,
   isNumberArray,
   isBoolArray,
+  isStringUnion,
+  isNumberUnion,
   isInterface,
   PropsInterface,
   PropType,
   PrimitiveType,
 } from "/helpers.js";
+import { Grid, Box, TextField, Checkbox, MenuItem } from "@material-ui/core";
 
 declare global {
   const __DEBUG__: boolean;
 }
 
 type ChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => void;
+type UnionState = Record<string, (string | number)[]>;
 
 const setDefaultValues = (propTypes: PropsInterface) => {
   const defaultProps: any = {};
+  const unions: any = {};
   for (const [prop, type] of Object.entries(propTypes)) {
     if (isNumber(type)) defaultProps[prop] = 0;
     if (isBoolean(type)) defaultProps[prop] = false;
     if (isString(type)) defaultProps[prop] = "Text";
-    if (isNumberArray(type)) defaultProps[prop] = [0, 1, 2];
+    if (isNumberArray(type)) defaultProps[prop] = [1, 2, 3];
     if (isStringArray(type)) defaultProps[prop] = ["Text", "Text", "Text"];
     if (isBoolArray(type)) defaultProps[prop] = [true, true, true];
-    if (isInterface(type)) defaultProps[prop] = setDefaultValues(type);
+    if (isStringUnion(type)) {
+      defaultProps[prop] = "Variant1";
+      unions[prop] = ["Variant1", "Variant2"];
+    }
+    if (isNumberUnion(type)) {
+      defaultProps[prop] = 0;
+      unions[prop] = [0, 1];
+    }
+    if (isInterface(type))
+      defaultProps[prop] = setDefaultValues(type).defaultProps;
   }
-  return defaultProps;
+  return { unions, defaultProps };
 };
 
 export const Loader: React.FC<typeof debugLoaderProps> = ({
   debugProps,
   debugPropTypes,
   debugComponent,
+  debugUnions,
 }: any) => {
   const [imports, setImports] = useState<{ component: React.FC } | null>(
     debugComponent || null
@@ -46,6 +61,7 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
     debugPropTypes || null
   );
   const [props, setProps] = useState(debugProps || {});
+  const [unions, setUnions] = useState<UnionState>(debugUnions || {});
 
   const createInputs = (propTypes: PropsInterface) => {
     const inputs: JSX.Element[] = [];
@@ -56,29 +72,43 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
       if (isString(type)) return { type: "text", isArray: false };
       if (isStringArray(type)) return { type: "text", isArray: true };
       if (isNumberArray(type)) return { type: "number", isArray: true };
+      if (isNumberUnion(type))
+        return { type: "number", isUnion: true, isArray: false };
+      if (isStringUnion(type))
+        return { type: "string", isUnion: true, isArray: false };
       return { type: "unknown", isArray: false };
     };
 
     const createCheckboxInput = (handleChange: ChangeHandler) => (
-      <input
-        type="checkbox"
-        defaultChecked={false}
-        onChange={handleChange}
-      ></input>
+      <Checkbox defaultChecked={false} onChange={handleChange}></Checkbox>
     );
 
     const createNumberInput = (handleChange: ChangeHandler) => (
-      <input type="number" defaultValue={"0"} onChange={handleChange}></input>
+      <TextField
+        type="number"
+        defaultValue={"0"}
+        size="small"
+        variant="outlined"
+        onChange={handleChange}
+      ></TextField>
     );
 
     const createNumericTextInput = (handleChange: ChangeHandler) => (
-      <input type="text" onChange={handleChange} defaultValue={"1, 2, 3"} />
+      <TextField
+        type="text"
+        onChange={handleChange}
+        size="small"
+        variant="outlined"
+        defaultValue={"1, 2, 3"}
+      />
     );
 
     const createTextInput = (handleChange: ChangeHandler, isArray: boolean) => (
-      <input
+      <TextField
         type="text"
         onChange={handleChange}
+        size="small"
+        variant="outlined"
         defaultValue={isArray ? "Text, Text, Text" : "Text"}
       />
     );
@@ -87,12 +117,17 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
       handleChange: ChangeHandler,
       defaultValue: any
     ) => (
-      <input type="text" onChange={handleChange} defaultValue={defaultValue} />
+      <TextField
+        type="text"
+        onChange={handleChange}
+        size="small"
+        variant="outlined"
+        defaultValue={defaultValue}
+      />
     );
 
     for (const [prop, type] of Object.entries(propTypes)) {
-      console.log("type", type);
-      const { type: inputType, isArray } = getInputType(type);
+      const { type: inputType, isArray, isUnion } = getInputType(type);
       const input = (() => {
         switch (inputType) {
           case "checkbox": {
@@ -104,7 +139,30 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
           }
 
           case "text": {
-            const handleChange: ChangeHandler = (e) => {
+            let handleChange: ChangeHandler;
+
+            if (isUnion) {
+              handleChange = (e) => {
+                const value = e.target.value;
+                setProps({ ...props, [prop]: value });
+              };
+
+              return (
+                <TextField
+                  onChange={handleChange}
+                  select
+                  value={props[prop]}
+                  size="small"
+                  variant="outlined"
+                >
+                  {unions[prop].map((opt) => (
+                    <MenuItem value={opt}>{opt}</MenuItem>
+                  ))}
+                </TextField>
+              );
+            }
+
+            handleChange = (e) => {
               const value = isArray
                 ? e.target.value.split(",")
                 : e.target.value;
@@ -115,14 +173,41 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
           }
 
           case "number": {
-            const handleChange: ChangeHandler = (e) => {
-              const value = isArray
-                ? e.target.value.split(",").map(Number)
-                : Number(e.target.value);
+            let handleChange: ChangeHandler;
+
+            if (isUnion) {
+              handleChange = (e) => {
+                const value = Number(e.target.value);
+                setProps({ ...props, [prop]: value });
+              };
+
+              return (
+                <TextField
+                  onChange={handleChange}
+                  select
+                  value={props[prop]}
+                  size="small"
+                  variant="outlined"
+                >
+                  {unions[prop].map((opt) => (
+                    <MenuItem value={opt}>{opt}</MenuItem>
+                  ))}
+                </TextField>
+              );
+            }
+
+            if (isArray) {
+              handleChange = (e) => {
+                const value = e.target.value.split(",").map(Number);
+                setProps({ ...props, [prop]: value });
+              };
+              return createNumericTextInput(handleChange);
+            }
+
+            handleChange = (e) => {
+              const value = Number(e.target.value);
               setProps({ ...props, [prop]: value });
             };
-
-            if (isArray) return createNumericTextInput(handleChange);
 
             return createNumberInput(handleChange);
           }
@@ -134,18 +219,20 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
                 [prop]: JSON.parse(e.target.value),
               });
 
-            console.log(type);
-
             return createGenericTextInput(handleChange, JSON.stringify(type));
           }
         }
       })();
 
       inputs.push(
-        <div className="looc-css-form">
-          <label>{prop}</label>
-          {input}
-        </div>
+        <Grid alignItems="center" justify="space-between" item container>
+          <Grid item>
+            <Box fontWeight="fontWeightBold" fontFamily="Monospace" m={2}>
+              {prop}
+            </Box>
+          </Grid>
+          <Grid item>{input}</Grid>
+        </Grid>
       );
     }
     return inputs;
@@ -166,7 +253,11 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
 
             setPropTypes(propTypes);
             setImports({ component });
-            setProps(setDefaultValues(propTypes));
+
+            const { unions, defaultProps } = setDefaultValues(propTypes);
+
+            setProps(defaultProps);
+            setUnions(unions);
           })
           .catch((e) =>
             console.log(`There was a problem importing ${data.filepath}!`, e)
@@ -184,7 +275,24 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
   return (
     <>
       <Component __LOOC_DEBUG__ {...props} />
-      <div className="looc-css-container">{createInputs(propTypes!)}</div>
+      <Box
+        display="inline-block"
+        maxHeight={"30vh"}
+        boxSizing="border-box"
+        width={"100%"}
+        overflow={"scroll"}
+        overflow-x={"hidden"}
+        position="fixed"
+        bottom={0}
+        bgcolor="#faf8f7"
+        p={2}
+      >
+        <Box width={"50%"}>
+          <Grid direction="column" container>
+            {createInputs(propTypes!)}
+          </Grid>
+        </Box>
+      </Box>
     </>
   );
 };
@@ -200,13 +308,14 @@ const defaultDebugPropTypes = {
   count3: "number",
   text3: "string",
   arr: ["number"] as [PrimitiveType],
+  choice: ["number", "number"] as [PrimitiveType, PrimitiveType],
   complex: {
     a: "number",
     b: "string",
   },
 };
 
-const defaultDebugProps = setDefaultValues(
+const { defaultProps: defaultDebugProps, unions } = setDefaultValues(
   defaultDebugPropTypes as PropsInterface
 );
 
@@ -224,6 +333,7 @@ const DebugComponent = (props: typeof defaultDebugProps) => {
       <div>number3: {props.count3}</div>
       <div>text3: {props.text3}</div>
       <div>arr sum: {props.arr.reduce((a: number, b: number) => a + b)}</div>
+      <div>choice: {props.choice}</div>
       <div>complex a: {props.complex.a}</div>
       <div>complex b: {props.complex.b}</div>
     </div>
@@ -236,6 +346,7 @@ const debugLoaderProps = {
   },
   debugPropTypes: defaultDebugPropTypes,
   debugProps: defaultDebugProps,
+  debugUnions: unions,
 };
 
 ReactDOM.render(

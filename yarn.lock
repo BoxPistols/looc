@@ -3799,13 +3799,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"has-yarn@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "has-yarn@npm:2.1.0"
-  checksum: 2/105682f263a3437972c75594cdda237ce8454f67cae37a36a507701f300dade0460231dabbe873a7df035b7c0a0b3a686c9fcd1eebb29c73ca35753ecae6fb7d
-  languageName: node
-  linkType: hard
-
 "has@npm:^1.0.0, has@npm:^1.0.3":
   version: 1.0.3
   resolution: "has@npm:1.0.3"
@@ -4766,13 +4759,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"lodash._reinterpolate@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "lodash._reinterpolate@npm:3.0.0"
-  checksum: 2/27513557d6fe526296324f1de9e1b8e8ac88ef2a2544a655e825f3ab0f52c5a675f1a73a0c9ff3c64fda031c56dfb4deb9dac7c7d21f9a04bc63dd7db5a5a73d
-  languageName: node
-  linkType: hard
-
 "lodash.camelcase@npm:^4.3.0":
   version: 4.3.0
   resolution: "lodash.camelcase@npm:4.3.0"
@@ -4784,25 +4770,6 @@ fsevents@~2.1.2:
   version: 4.1.2
   resolution: "lodash.memoize@npm:4.1.2"
   checksum: 2/080c1095b7795b293a06078737550dc0c8138192cadbafb4e4b1303357d367ac589a1a570fad8de154175b008ca7b2b48d6a7f1755a143e13b764e20a7104080
-  languageName: node
-  linkType: hard
-
-"lodash.template@npm:^4.4.0":
-  version: 4.5.0
-  resolution: "lodash.template@npm:4.5.0"
-  dependencies:
-    lodash._reinterpolate: ^3.0.0
-    lodash.templatesettings: ^4.0.0
-  checksum: 2/e27068e20b7a374938c20ab76a093dd49e9626bfbe1882d9d05d81efefe3210cfcd6ad24f1cb0d956ce57d75855fec17bd386a4aa54762a144bd7c0891ee7ee1
-  languageName: node
-  linkType: hard
-
-"lodash.templatesettings@npm:^4.0.0":
-  version: 4.2.0
-  resolution: "lodash.templatesettings@npm:4.2.0"
-  dependencies:
-    lodash._reinterpolate: ^3.0.0
-  checksum: 2/45546a5b76376b138ef4f01aa2722813127c639428eb9baef3fbac176b509ee2dab5cb9d1ee8267dbeeef8d49371f9a748af3df83649bf8b75fa54993f65b7aa
   languageName: node
   linkType: hard
 
@@ -4881,11 +4848,9 @@ fsevents@~2.1.2:
     "@types/serve-handler": ^6.1.0
     execa: ^4.0.0
     fs-extra: ^9.0.0
-    has-yarn: ^2.1.0
     looc-loader: "workspace:looc-loader"
     rimraf: ^3.0.2
     rollup: ^2.6.0
-    rollup-plugin-banner: ^0.2.1
     rollup-plugin-copy: ^3.3.0
     rollup-plugin-postcss: ^2.5.0
     rollup-plugin-typescript2: ^0.27.0
@@ -6750,15 +6715,6 @@ fsevents@~2.1.2:
     "@babel/core": 7 || ^7.0.0-rc.2
     rollup: ">=0.60.0 <3"
   checksum: 2/9f82719d1595e4f6770d6d5521f8bd982eace92d97ac258d37c0e2410c3e355f7bb5423ca00a178fe78e6c07facfd20cfa06c25f468d419b3152802e256d6f86
-  languageName: node
-  linkType: hard
-
-"rollup-plugin-banner@npm:^0.2.1":
-  version: 0.2.1
-  resolution: "rollup-plugin-banner@npm:0.2.1"
-  dependencies:
-    lodash.template: ^4.4.0
-  checksum: 2/df2d2add6c15902b6c108533d7a38c0be81857b6d60510214e7a41757c9451a5e22d2a92f9e90f88e98b3535051cd7702fcd9552d95818d51728ef3e0fd3f137
   languageName: node
   linkType: hard
 
