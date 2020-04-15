@@ -2,6 +2,7 @@ import type { extractInterfaces } from "tsx-ray";
 import execa from "execa";
 import fs from "fs-extra";
 import path from "path";
+import chalk from "chalk";
 
 type Interfaces = ReturnType<typeof extractInterfaces>;
 
@@ -58,6 +59,8 @@ export const readCachedData = async (cacheDir: string) => {
   let data = null;
   try {
     data = await fs.readJSON(path.join(cacheDir, "data.json"));
+  } catch {
+    throw Error(chalk.bold.red(`Count not read data.json`));
   } finally {
     return data;
   }

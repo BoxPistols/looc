@@ -21,6 +21,7 @@
     "tslib": "^1.11.1"
   },
   "dependencies": {
+    "chalk": "^4.0.0",
     "execa": "^4.0.0",
     "fs-extra": "^9.0.0",
     "looc-loader": "workspace:looc-loader",
@@ -32,7 +33,7 @@
     "serve-handler": "^6.1.2",
     "snowpack": "^1.6.0",
     "ts-morph": "^7.0.2",
-    "tsx-ray": "^0.1.2",
+    "tsx-ray": "^0.1.5",
     "typescript": "^3.8.3"
   }
 }

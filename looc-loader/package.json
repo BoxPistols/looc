@@ -25,7 +25,7 @@
     "rollup-plugin-typescript2": "^0.27.0",
     "rollup-plugin-web-imports": "^0.1.0",
     "tslib": "^1.11.1",
-    "tsx-ray": "^0.1.2",
+    "tsx-ray": "^0.1.5",
     "typescript": "^3.8.3"
   },
   "snowpack": {

@@ -7,6 +7,7 @@ export default {
     "has-yarn",
     "execa",
     "path",
+    "chalk",
     "http",
     "typescript",
     "rollup-plugin-postcss",

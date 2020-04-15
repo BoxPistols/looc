@@ -9,14 +9,14 @@ const Card = styled.div`
   color: blue;
 `;
 
-interface IDCardProps {
+interface IDCardPropz {
   firstName: number;
   secondName: number;
   age: number;
   picShape: "squared" | "round";
 }
 
-const IDCard: React.FC<IDCardProps & { __LOOC_DEBUG__: boolean }> = ({
+const IDCard: React.FC<IDCardPropz & { __LOOC_DEBUG__: boolean }> = ({
   /*   firstName = "",
   secondName = "",
   age = 0,

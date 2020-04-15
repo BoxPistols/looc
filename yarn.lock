@@ -2273,6 +2273,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chalk@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "chalk@npm:4.0.0"
+  dependencies:
+    ansi-styles: ^4.1.0
+    supports-color: ^7.1.0
+  checksum: 2/12b01a228b5ca2f03a82684c62d54c06e2ba2f7b81dd08fac56c5b9288958dd24f9cae866e140df5c29cb736059cb4be0165157ebb0b15039cc1ea511a2dab60
+  languageName: node
+  linkType: hard
+
 "chokidar@npm:^2.1.5":
   version: 2.1.8
   resolution: "chokidar@npm:2.1.8"
@@ -4833,7 +4843,7 @@ fsevents@~2.1.2:
     rollup-plugin-typescript2: ^0.27.0
     rollup-plugin-web-imports: ^0.1.0
     tslib: ^1.11.1
-    tsx-ray: ^0.1.2
+    tsx-ray: ^0.1.5
     typescript: ^3.8.3
   languageName: unknown
   linkType: soft
@@ -4846,6 +4856,7 @@ fsevents@~2.1.2:
     "@types/node": ^13.11.1
     "@types/sade": ^1.6.0
     "@types/serve-handler": ^6.1.0
+    chalk: ^4.0.0
     execa: ^4.0.0
     fs-extra: ^9.0.0
     looc-loader: "workspace:looc-loader"
@@ -4860,7 +4871,7 @@ fsevents@~2.1.2:
     snowpack: ^1.6.0
     ts-morph: ^7.0.2
     tslib: ^1.11.1
-    tsx-ray: ^0.1.2
+    tsx-ray: ^0.1.5
     typescript: ^3.8.3
   bin:
     looc: bin/cli.js
@@ -7615,12 +7626,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"tsx-ray@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "tsx-ray@npm:0.1.2"
+"tsx-ray@npm:^0.1.5":
+  version: 0.1.5
+  resolution: "tsx-ray@npm:0.1.5"
   dependencies:
     ts-morph: ^7.0.1
-  checksum: 2/528482f8b53640fb18857361fb800b8f8e4ddf66182c0aa2d6d98c3e45a5c2045ae4238a54401cd36bec59c0fc424bf33b7a440d4676774c83a03d6bd4ecac75
+  checksum: 2/25c2002609f124e52af7c68ba12c9d55f32e8bc9cd5d4deb8dfc0be7b49da8cd68ced59e66a2d0fddd41c7f803acb8cd683eb9d1338e6fb6c9678f8122577ec6
   languageName: node
   linkType: hard
 

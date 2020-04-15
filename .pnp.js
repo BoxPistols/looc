@@ -626,7 +626,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "ansi-styles",
-        "npm:2.2.1"
+        "npm:4.2.1"
       ],
       [
         "anymatch",
@@ -842,7 +842,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "chalk",
-        "npm:2.4.2"
+        "npm:4.0.0"
       ],
       [
         "chokidar",
@@ -2758,7 +2758,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "tsx-ray",
-        "npm:0.1.2"
+        "npm:0.1.5"
       ],
       [
         "tunnel-agent",
@@ -5623,6 +5623,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["supports-color", "npm:7.1.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.0.0", {
+          "packageLocation": "./.yarn/cache/chalk-npm-4.0.0-50e5418ea0-2.zip/node_modules/chalk/",
+          "packageDependencies": [
+            ["chalk", "npm:4.0.0"],
+            ["ansi-styles", "npm:4.2.1"],
+            ["supports-color", "npm:7.1.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["chokidar", [
@@ -8450,6 +8459,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:13.11.1"],
             ["@types/sade", "npm:1.6.0"],
             ["@types/serve-handler", "npm:6.1.0"],
+            ["chalk", "npm:4.0.0"],
             ["execa", "npm:4.0.0"],
             ["fs-extra", "npm:9.0.0"],
             ["looc-loader", "workspace:looc-loader"],
@@ -8464,7 +8474,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["snowpack", "npm:1.6.0"],
             ["ts-morph", "npm:7.0.2"],
             ["tslib", "npm:1.11.1"],
-            ["tsx-ray", "npm:0.1.2"],
+            ["tsx-ray", "npm:0.1.5"],
             ["typescript", "patch:typescript@npm%3A3.8.3#builtin<compat/typescript>::version=3.8.3&hash=270b6c"]
           ],
           "linkType": "SOFT",
@@ -8510,7 +8520,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rollup-plugin-typescript2", "virtual:c2e615aab7b6ef1b222b8dcfd48a1fb36cf5d97fff11eb10d190f688a077017289ceab5afbbbf915309e83fa14815fb701a81f8bec817ec9edd69f1f2635f70a#npm:0.27.0"],
             ["rollup-plugin-web-imports", "npm:0.1.0"],
             ["tslib", "npm:1.11.1"],
-            ["tsx-ray", "npm:0.1.2"],
+            ["tsx-ray", "npm:0.1.5"],
             ["typescript", "patch:typescript@npm%3A3.8.3#builtin<compat/typescript>::version=3.8.3&hash=270b6c"]
           ],
           "linkType": "SOFT",
@@ -11551,10 +11561,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["tsx-ray", [
-        ["npm:0.1.2", {
-          "packageLocation": "./.yarn/cache/tsx-ray-npm-0.1.2-f5acb0bb84-2.zip/node_modules/tsx-ray/",
+        ["npm:0.1.5", {
+          "packageLocation": "./.yarn/cache/tsx-ray-npm-0.1.5-7b1d015ec3-2.zip/node_modules/tsx-ray/",
           "packageDependencies": [
-            ["tsx-ray", "npm:0.1.2"],
+            ["tsx-ray", "npm:0.1.5"],
             ["ts-morph", "npm:7.0.2"]
           ],
           "linkType": "HARD",
