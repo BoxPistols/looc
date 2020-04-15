@@ -1,5 +1,0 @@
-{
-  "imports": {
-    "looc-loader": "./looc-loader.js"
-  }
-}
