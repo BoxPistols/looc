@@ -68,6 +68,8 @@ import styles from "styles.css";
 
 * `--styled-components` : Use if you style your components with [styled-components](https://github.com/styled-components/styled-components).
 
+- `--without-props`: Use this if you components does not need props.
+
 ## How it works
 
 Internally, Looc uses [tsx-ray](https://github.com/jlkiri/tsx-ray) to parse the `.tsx` file and extract interfaces from it. This information is used to decide which props can be passed to your component and what type they should be.
@@ -101,6 +103,9 @@ Union types (especially literals) map very nicely to a `<select>`. For example a
 
 * **Q**: I have some logic that relies on external libraries but that is not crucial for visual testing. How do I detect that my component is in a sandbox and prevent this logic from applying?
   **A**: A loaded component is provided with a special `boolean` prop `__LOOC_DEBUG__` which is always `true` if your component is loaded with `looc start`. You can use it to conditionally prevent any logic from applying.
+
+- **Q**: I get the `No interfaces found!` error.
+  **A**: It could be that your components does not need props at all. To tell Looc that it does not need to look for interfaces you need a `--without-props` flag.
 
 ## Contribution
 
