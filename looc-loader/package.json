@@ -1,8 +1,12 @@
 {
   "name": "looc-loader",
   "module": "build/index.esm.js",
+  "version": "0.2.0",
+  "author": "jlkiri",
+  "typings": "build/index.d.ts",
   "files": [
-    "build/index.esm.js"
+    "build/index.esm.js",
+    "build/index.d.ts"
   ],
   "scripts": {
     "install-modules": "yarn dlx snowpack --source pika --dest src/web_modules",
