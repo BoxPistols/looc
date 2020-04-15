@@ -26,6 +26,9 @@ export const start = async (
     const cacheDir = path.join(cwd, `.cache`);
 
     const isEmotion = options["emotion"];
+    const noProps = options["without-props"];
+
+    console.log(noProps);
 
     const project = new Project({
       compilerOptions: {
@@ -52,9 +55,9 @@ export const start = async (
       );
     }
 
-    const parsedInterfaces = extractInterfaces(sourceFile);
+    const parsedInterfaces = noProps ? {} : extractInterfaces(sourceFile);
 
-    if (Object.keys(parsedInterfaces).length === 0) {
+    if (Object.keys(parsedInterfaces).length === 0 && !noProps) {
       throw Error(chalk.bold.red("No interfaces found!"));
     }
 
@@ -94,13 +97,18 @@ export const start = async (
     try {
       await snowpackInstall(uninstalledLibs, cacheDir);
     } catch {
-      throw Error(chalk.bold.red(`Failed to install required libraries!`));
+      throw Error(
+        chalk.bold.red(
+          `Something went wrong when trying to install required libraries!`
+        )
+      );
     }
 
     const data = {
       interfaces: parsedInterfaces,
       filepath: sourceFilename,
       installedLibs: allLibs,
+      noProps: !!noProps,
     };
 
     await fs.writeFile(path.join(cacheDir, "data.json"), JSON.stringify(data));

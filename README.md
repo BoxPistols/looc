@@ -106,6 +106,8 @@ Union types (especially literals) map very nicely to a `<select>`. For example a
 
 This project uses Yarn 2 and its PnP feature (plug-n-play). All dependencies are kept inside the repository. The code is written entirely in Typescript. Looc project is a monorepo.
 
+Feel free to open an issue!
+
 ### Structure
 
 - `looc`: This workspace contains the code for CLI.
@@ -120,4 +122,4 @@ This project uses Yarn 2 and its PnP feature (plug-n-play). All dependencies are
 2. Clone your fork to work on it locally
 3. Make changes
 4. Run `yarn build` and make sure that it builds without crash (there will be Yarn 2 specific warnings that can be ignored)
-5. Run `yarn e2e:start` to make sure
+5. Run `yarn e2e:start` to make sure real code works with `looc`

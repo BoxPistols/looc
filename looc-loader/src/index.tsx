@@ -35,6 +35,7 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
   debugPropTypes,
   debugComponent,
 }: any) => {
+  const [noProps, setNoProps] = useState(false);
   const [imports, setImports] = useState<{
     component: React.FC<{ __LOOC_DEBUG__: boolean }>;
   } | null>(debugComponent || null);
@@ -260,6 +261,14 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
         const data = await response.json();
         return import(`/${data.filepath}`)
           .then(({ default: component }) => {
+            const noProps = data.noProps;
+
+            if (noProps) {
+              setNoProps(true);
+              setImports({ component });
+              return;
+            }
+
             const propTypes = getPropTypesByComponent(component.name)(
               data.interfaces
             );
@@ -293,9 +302,11 @@ export const Loader: React.FC<typeof debugLoaderProps> = ({
   }, []);
 
   if (!imports) return null;
-  if (!propValues) return null;
 
   const { component: Component } = imports;
+  if (noProps) return <Component __LOOC_DEBUG__ />;
+
+  if (!propValues) return null;
 
   return (
     <>
