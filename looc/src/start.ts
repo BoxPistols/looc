@@ -28,8 +28,6 @@ export const start = async (
     const isEmotion = options["emotion"];
     const noProps = options["without-props"];
 
-    console.log(noProps);
-
     const project = new Project({
       compilerOptions: {
         outDir: path.join(cacheDir),
@@ -82,7 +80,9 @@ export const start = async (
     const cachedData = await readCachedData(cacheDir);
     const installedLibs = cachedData ? cachedData.installedLibs : [];
 
-    console.log("Skipping previously installed libraries: ", installedLibs);
+    if (installedLibs.length > 0) {
+      console.log("Skipping previously installed libraries: ", installedLibs);
+    }
 
     await fs.ensureDir(cacheDir);
 

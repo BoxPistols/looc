@@ -2,7 +2,7 @@
 
 ## What is Looc?
 
-Looc is a tool that allows you to "sandbox" and view your React components in browser independently from other existing components. With Looc you can manipulate the component's props and see how it reacts to updates. This is very useful for testing components without having to rebuild the whole project on every single change. Looc can prepare your component in almost **zero** time.
+Looc is a tool that allows you to "sandbox" and view your React components in browser independently from other existing components. With Looc you can manipulate the component's props and see how it reacts to updates. This is very useful for testing components without having to rebuild the whole project on every single change. You can think of it as a fast Storybook for single components. Looc can prepare your component in almost **zero** time during to the way it builds your components.
 
 ## Requirements
 
