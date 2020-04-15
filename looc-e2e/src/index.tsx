@@ -3,13 +3,14 @@
 import React from "react";
 import { css, jsx } from "@emotion/core";
 import styled from "@emotion/styled";
+import "./global.css";
 
 interface PicProps {
   shape: IDCardProps["picShape"];
 }
 
 const CardFrame = styled.div`
-  width: 250px;
+  width: 300px;
   border: 1px solid gainsboro;
   border-radius: 7px;
   padding: 8px;
@@ -29,6 +30,7 @@ const UpperHalf = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 10px;
   padding-right: 20px;
   padding-left: 20px;
 `;
@@ -104,6 +106,7 @@ const IDCard: React.FC<IDCardProps & { __LOOC_DEBUG__: boolean }> = ({
           css={css`
             font-family: monospace;
             font-size: 13px;
+            color: white;
           `}
         >
           ID: {id}
