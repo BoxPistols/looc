@@ -2,15 +2,15 @@
 
 ## What is Looc?
 
-Looc is a tool that allows you to "sandbox" and view your React components in browser independently from other existing components. With Looc you can manipulate the component's props and see how it reacts to updates. This is very useful for testing components without having to rebuild the whole project on every single change. You can think of it as a fast Storybook for single components. Looc can prepare your component in almost **zero** time during to the way it builds your components.
+Looc is a tool that allows you to quickly preview your React components in the browser independently from other existing components. With Looc you can manipulate the component's props and immediately see how it reacts to updates. This is very useful for testing components without having to rebuild the whole project on every single change. You can think of it as a fast alternative to Storybook with the [knobs addon](https://github.com/storybookjs/storybook/tree/master/addons/knobs) enabled automatically but for single components. Looc can prepare your component in almost **zero** time because it relies on native support for ESM modules in the browser, so there is no need to transpile and bundle external libraries.
 
 ## Requirements
 
-To be able to use Looc you need to make sure that:
+While you don't need to write _any_ additional code to use Looc, you need to make sure that:
 
 1. You use Typescript. It only works on `.tsx` files. To understand why see the _How it works_ section below.
 
-2. There is an **interface** inside the `.tsx` file that is named `xxxProps` where `xxx` is the name of your component. If your component is named `Card`, then you need an interface named `CardProps`.
+2. There is an **interface** inside the `.tsx` file that is named `xxxProps` where `xxx` is the name of your component. If your component is named `Card`, then you need an interface named `CardProps`. If your component does not have props, then you can skip this requirement.
 
 3. Your component is a default export.
 
@@ -70,25 +70,27 @@ import styles from "styles.css";
 
 - `--without-props`: Use this if you components does not need props.
 
+* `--clean`: Remove the cache during the build.
+
 ## How it works
 
 Internally, Looc uses [tsx-ray](https://github.com/jlkiri/tsx-ray) to parse the `.tsx` file and extract interfaces from it. This information is used to decide which props can be passed to your component and what type they should be.
 
-Next, if you use libraries like [emotion](https://github.com/emotion-js/emotion) or [styled-com ponents](https://github.com/styled-components/styled-components), Looc uses [snowpack](https://github.com/pikapkg/snowpack) to download ESM versions of those libraries so it can import them directly from browser.
+Next, if you use libraries like [emotion](https://github.com/emotion-js/emotion) or [styled-com ponents](https://github.com/styled-components/styled-components), Looc uses [snowpack](https://github.com/pikapkg/snowpack) to download ESM versions of those libraries so it can import them directly from browser. This is why Looc needs `npx`: because `snowpack` is started with `npx`.
 
-This allows to reduce the build-rebuild time to almost zero (almost because Looc still needs to resolve and bundle imports of other components and because Typescript needs to be compiled). Still, it is **very** fast compared to how much you need to wait if you use Storybook and your project is big. Looc uses [rollup](https://github.com/rollup/rollup) to do the compilation and bundling.
+This approach allows to reduce the build-rebuild time to almost zero (_almost_, because Looc still needs to resolve and bundle imports of other components and because Typescript needs to be compiled). Initial installation of required libraries can take some time: usually less than a minute. Subsequent starts might take only a few seconds. It is **very** fast compared to how much you need to wait if you use Storybook and your project is big. Looc uses [rollup](https://github.com/rollup/rollup) to do the compilation and bundling.
 
-When your component is loaded, you can confirm it in the browser window. Looc provides a simple UI for manipulating props. The UI is generated automatically based on prop types. Since there is no way to know which props are required and which aren't, default values are set for every single prop based on its type.
+When your component is loaded, you can confirm it in the browser window. Looc provides a simple UI for manipulating props which you can see in the GIF above. The UI is generated automatically based on prop types. Since there is no way to know which props are required and which aren't, default values are set for every single prop based on its type.
 
 Here's a brief explanation of which `<input>` is generated based for which prop type:
 
-- `string`: `<input type="text">` <input type="text" value="Text">
-- `number`: `<input type="number">` <input type="number" value="0">
-- `string[]`: `<input type="text">` <input type="text" value="Text, Text, Text">
-- `number[]`: `<input type="text">` <input type="text" value="0, 1, 2">
-- `boolean`: `<input type="checkbox">` <input type="checkbox">
+- `string`: `<input type="text">`
+- `number`: `<input type="number">`
+- `string[]`: `<input type="text">`
+- `number[]`: `<input type="text">`
+- `boolean`: `<input type="checkbox">`
 
-Union types (especially literals) map very nicely to a `<select>`. For example a `"round" | "squared"` type is generated as a `<select>` with options `round` and `squared`: <select><option value="round">round<option value="squared">squared</select>
+Union types (especially literals) map very nicely to a `<select>`. For example a `"round" | "squared"` type is generated as a `<select>` with options `round` and `squared`.
 
 ### FAQ
 
