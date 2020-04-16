@@ -2,14 +2,14 @@ import { extractInterfaces, getDefaultImports } from "tsx-ray";
 import { Project } from "ts-morph";
 import ts from "typescript";
 import path from "path";
-import handler from "serve-handler";
-import http from "http";
 import fs from "fs-extra";
 import rollup from "rollup";
 import chalk from "chalk";
 import typescript from "rollup-plugin-typescript2";
 import webImports from "rollup-plugin-web-imports";
 import postcss from "rollup-plugin-postcss";
+import serve from "rollup-plugin-serve";
+import livereload from "rollup-plugin-livereload";
 import { snowpackInstall, readCachedData } from "./helpers";
 
 const REQUIRED_LIBS = ["react", "react-dom", "@material-ui/core"];
@@ -155,38 +155,19 @@ export const start = async (
 
     const outputOpts = {
       dir: cacheDir,
+      plugins: [serve(cacheDir), livereload()],
     };
 
     //project.emitSync();
 
-    const bundle = await rollup.rollup(inputOpts);
+    rollup.watch({ ...inputOpts, output: outputOpts });
 
-    await bundle.generate(outputOpts);
+    /* await bundle.generate(outputOpts);
 
-    await bundle.write(outputOpts);
+    await bundle.write(outputOpts); */
 
     await fs.copy(htmlDir, cacheDir);
     await fs.copy(modulesDir, path.join(cacheDir, "web_modules"));
-
-    const server = http.createServer((request, response) => {
-      // You pass two more arguments for config and middleware
-      // More details here: https://github.com/zeit/serve-handler#options
-      return handler(request, response, {
-        public: path.join(cwd, `.cache`),
-        headers: [
-          {
-            source: "/web_modules/import-map.json",
-            headers: [
-              { key: "Content-Type", value: "application/importmap+json" },
-            ],
-          },
-        ],
-      });
-    });
-
-    server.listen(3000, () => {
-      console.log("Running at http://localhost:3000");
-    });
   } catch (e) {
     console.log(
       `${chalk.bold.whiteBright(`LOOC ERROR:`)} ${chalk.bold.red(e.message)}`

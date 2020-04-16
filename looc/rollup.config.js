@@ -12,6 +12,7 @@ export default {
     "typescript",
     "rollup-plugin-postcss",
     "rollup-plugin-typescript2",
+    "rollup-plugin-serve",
     "rollup",
     "ts-morph",
     "tsx-ray",
@@ -19,7 +20,8 @@ export default {
     "serve-handler",
     "rollup",
     "fs-extra",
-    "rollup-plugin-typescript2",
+    "rollup-plugin-livereload",
+    "rollup-plugin-live-server",
     "rollup-plugin-web-imports",
   ],
   plugins: [
