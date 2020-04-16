@@ -2,7 +2,7 @@
 
 ## What is Looc?
 
-Looc is a tool that allows you to quickly preview your React components in the browser independently from other existing components. With Looc you can manipulate the component's props and immediately see how it reacts to updates. This is very useful for testing components without having to rebuild the whole project on every single change. You can think of it as a fast alternative to Storybook with the [knobs addon](https://github.com/storybookjs/storybook/tree/master/addons/knobs) enabled automatically but for single components. Looc can prepare your component in almost **zero** time because it relies on native support for ESM modules in the browser, so there is no need to transpile and bundle external libraries.
+Looc is a tool that allows you to quickly preview your React components in the browser independently from other existing components. With Looc you can "sandbox" the component and manipulate its props and immediately see how it reacts to updates. This is very useful for testing components without having to rebuild the whole project on every single change. You can think of it as a fast alternative to Storybook with the [knobs addon](https://github.com/storybookjs/storybook/tree/master/addons/knobs) enabled automatically but for single components. Looc can prepare your component in almost **zero** time because it relies on native support for ESM modules in the browser, so there is no need to transpile and bundle external libraries.
 
 ## Requirements
 
@@ -28,7 +28,7 @@ $ yarn add looc -D
 
 ### Start
 
-Use the `looc start` command to start the server that serves your sandboxed component:
+Use the `looc start` command to start the live server that serves your sandboxed component:
 
 ```bash
 $ yarn looc start src/component.tsx
