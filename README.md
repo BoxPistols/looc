@@ -96,6 +96,9 @@ Union types (especially literals) map very nicely to a `<select>`. For example a
 
 ### FAQ
 
+- **Q**: Does it support object type props?
+  **A**: It does set default values so your components does not crash, but there is no input for objects. If you do need object props though, the text input is generated anyway, with a string representation of the object, which you can modify and it will be `JSON.parse`d.
+
 - **Q**: Can I use global CSS styles?
   **A**: If your component relies on some global CSS, then the styles will not apply unless the CSS file is imported directy into the file with component.
 
