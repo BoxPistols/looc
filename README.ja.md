@@ -48,7 +48,7 @@ $ npx looc start src/component.tsx
 
 ### `start <filepath>`
 
-`filepath`はカレントディレクトリの相対パスでなければならない
+`filepath`は、確認したいコンポーネントがあるファイルへのパスです。`filepath`はカレントディレクトリの相対パスでなければならない
 
 フラグ:
 
