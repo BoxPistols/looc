@@ -4,7 +4,7 @@
   "bin": "bin/cli.js",
   "module": "build/index.esm.js",
   "author": "jlkiri",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "typings": "build/index.d.ts",
   "files": [
     "build",
