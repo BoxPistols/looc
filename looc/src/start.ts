@@ -155,7 +155,7 @@ export const start = async (
 
     const outputOpts = {
       dir: cacheDir,
-      plugins: [serve(cacheDir), livereload()],
+      plugins: [serve({ contentBase: cacheDir, port: 3000 }), livereload()],
     };
 
     //project.emitSync();
