@@ -96,10 +96,10 @@ export const start = async (
 
     try {
       await snowpackInstall(uninstalledLibs, cacheDir);
-    } catch {
+    } catch (e) {
       throw Error(
         chalk.bold.red(
-          `Something went wrong when trying to install required libraries!`
+          `Something went wrong when trying to install required libraries! Error: ${e}`
         )
       );
     }
