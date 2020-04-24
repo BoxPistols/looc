@@ -160,7 +160,21 @@ export const start = async (
 
     //project.emitSync();
 
-    rollup.watch({ ...inputOpts, output: outputOpts });
+    const watcher = rollup.watch({
+      ...inputOpts,
+      output: outputOpts,
+      watch: { clearScreen: true },
+    });
+
+    watcher.on("event", (event) => {
+      if (event.code === "BUNDLE_START") {
+        console.log(chalk.blue("Starting development server..."));
+      }
+      if (event.code === "ERROR") {
+        watcher.close();
+        throw event.error;
+      }
+    });
 
     /* await bundle.generate(outputOpts);
 
