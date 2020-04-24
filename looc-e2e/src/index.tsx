@@ -71,7 +71,7 @@ interface IDCardProps {
 const IDCard: React.FC<IDCardProps & { __LOOC_DEBUG__: boolean }> = ({
   firstName = "",
   lastName = "",
-  title = "",
+  titles = "",
   id = 0,
   telephone = "",
   picShape = "round",

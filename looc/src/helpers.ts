@@ -42,17 +42,13 @@ export const snowpackInstall = async (libs: StyleLibrary[], dest: string) => {
 
   await fs.outputJSON(configPath, snowpackConfig);
 
-  try {
-    await execa("npx", [
-      `snowpack`,
-      `--config`,
-      `${configPath}`,
-      `--source`,
-      `pika`,
-    ]);
-  } catch (e) {
-    console.error("LOOC ERROR:", e);
-  }
+  await execa("npx", [
+    `snowpack`,
+    `--config`,
+    `${configPath}`,
+    `--source`,
+    `pika`,
+  ]);
 };
 
 export const readCachedData = async (cacheDir: string) => {

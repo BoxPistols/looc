@@ -96,10 +96,10 @@ export const start = async (
 
     try {
       await snowpackInstall(uninstalledLibs, cacheDir);
-    } catch {
+    } catch (e) {
       throw Error(
         chalk.bold.red(
-          `Something went wrong when trying to install required libraries!`
+          `Something went wrong when trying to install required libraries! Error: ${e}`
         )
       );
     }
@@ -155,12 +155,26 @@ export const start = async (
 
     const outputOpts = {
       dir: cacheDir,
-      plugins: [serve(cacheDir), livereload()],
+      plugins: [serve({ contentBase: cacheDir, port: 3000 }), livereload()],
     };
 
     //project.emitSync();
 
-    rollup.watch({ ...inputOpts, output: outputOpts });
+    const watcher = rollup.watch({
+      ...inputOpts,
+      output: outputOpts,
+      watch: { clearScreen: true },
+    });
+
+    watcher.on("event", (event) => {
+      if (event.code === "BUNDLE_START") {
+        console.log(chalk.blue("Starting development server..."));
+      }
+      if (event.code === "ERROR") {
+        watcher.close();
+        throw event.error;
+      }
+    });
 
     /* await bundle.generate(outputOpts);
 

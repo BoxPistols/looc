@@ -3,7 +3,7 @@ import { start } from "./start";
 
 const cli = sade("looc");
 
-cli.version("0.6.0");
+cli.version("0.6.2");
 
 cli
   .command("start <filepath>")
