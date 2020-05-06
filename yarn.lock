@@ -4879,7 +4879,7 @@ fsevents@~2.1.2:
     react: ^16.13.1
     react-dom: ^16.13.1
     rimraf: ^3.0.2
-    rollup: ^2.4.0
+    rollup: ^2.8.0
     rollup-plugin-copy: ^3.3.0
     rollup-plugin-livereload: ^1.1.0
     rollup-plugin-serve: ^1.0.1
@@ -4904,7 +4904,7 @@ fsevents@~2.1.2:
     fs-extra: ^9.0.0
     looc-loader: "workspace:looc-loader"
     rimraf: ^3.0.2
-    rollup: ^2.6.0
+    rollup: ^2.8.0
     rollup-plugin-copy: ^3.3.0
     rollup-plugin-livereload: ^1.2.0
     rollup-plugin-postcss: ^2.5.0
@@ -6863,9 +6863,9 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "rollup@npm:2.4.0"
+"rollup@npm:^2.8.0":
+  version: 2.8.0
+  resolution: "rollup@npm:2.8.0"
   dependencies:
     fsevents: ~2.1.2
   dependenciesMeta:
@@ -6873,21 +6873,7 @@ fsevents@~2.1.2:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 2/05eb0f1c296d6482a9668664f5e9948297f050c42beb6ca36ee3348fb4bbe6883dea3fd883b15792e69c33afc5d83d1b0cfb5dea429ff425b7c6fba14d46db6d
-  languageName: node
-  linkType: hard
-
-"rollup@npm:^2.6.0":
-  version: 2.6.0
-  resolution: "rollup@npm:2.6.0"
-  dependencies:
-    fsevents: ~2.1.2
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  bin:
-    rollup: dist/bin/rollup
-  checksum: 2/52db6b2998b9e05c4fea0c8a4a4f8de710e71e11c1069d1e10b5ba116957b625c28590ea06c67e5b280204cb1affed00eb7357df0d44fa0ec33b1312b9538d9f
+  checksum: 2/31b4dfd6f1d1eb79936ee7c4a3310696c8a6f9eb0bdb4b3601544b5ad64c638501b283a8d1cfcbf96a9b8d998448d06904b256258c881e63f8e678160d004d04
   languageName: node
   linkType: hard
 

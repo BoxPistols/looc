@@ -22,7 +22,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.4.0",
+    "rollup": "^2.8.0",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-livereload": "^1.1.0",
     "rollup-plugin-serve": "^1.0.1",

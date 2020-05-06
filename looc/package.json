@@ -28,7 +28,7 @@
     "execa": "^4.0.0",
     "fs-extra": "^9.0.0",
     "looc-loader": "workspace:looc-loader",
-    "rollup": "^2.6.0",
+    "rollup": "^2.8.0",
     "rollup-plugin-livereload": "^1.2.0",
     "rollup-plugin-postcss": "^2.5.0",
     "rollup-plugin-serve": "^1.0.1",
